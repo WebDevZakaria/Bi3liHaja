@@ -6,6 +6,7 @@ import ResponsiveAppBar from './component/ResponsiveAppBar';
 //import { Theme } from '@radix-ui/themes';
 //import { ChakraProvider } from '@chakra-ui/react'
 import AddToCard from './screens/AddToCard';
+import Footer from './component/Footer';
 
 function App() {
 
@@ -26,6 +27,8 @@ function App() {
       </Routes>
 
     </main>
+
+    <Footer />
 
     </BrowserRouter>
 

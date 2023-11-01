@@ -2,7 +2,8 @@ import React from 'react'
 
 function HeroScreen() {
   return (
-<div class="px-6 py-12 text-center md:px-12 lg:text-left">
+
+/*<div class="px-6 py-12 text-center md:px-12 lg:text-left">
     <div class="w-100 mx-auto sm:max-w-2xl md:max-w-3xl lg:max-w-5xl xl:max-w-7xl">
       <div class="grid items-center gap-12 lg:grid-cols-2">
         <div class="mt-12 lg:mt-0">
@@ -20,7 +21,31 @@ function HeroScreen() {
         </div>
       </div>
     </div>
-  </div>
+  </div>*/
+
+<div class="bg-gray-50 flex items-center">
+	<section class="bg-cover bg-center py-32 w-full" style={{"background-image": "url('https://images.pexels.com/photos/7195232/pexels-photo-7195232.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')"}}>
+		<div class="container mx-auto text-left text-white">
+			<div class="flex items-center">
+				<div class="w-1/2">
+					<h1 class="text-5xl font-medium mb-6">اختر ولايتك و قم ببيع  <br /> اي شئ لديك</h1>
+					<p class="text-xl mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
+						euismod odio, gravida pellentesque urna varius vitae.</p>
+           
+					<a href="#" class="bg-indigo-500 text-white py-4 px-12 mx-8  rounded-full hover:bg-indigo-600">     تسوق    الان        </a>
+          <a href="#" class="bg-indigo-500 text-white py-4 px-12 rounded-full hover:bg-indigo-600">   تسجيل   الدخول  </a>
+       
+				</div>
+				<div class="w-1/2 pl-16">
+					<img src="https://images.pexels.com/photos/3806753/pexels-photo-3806753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class=" w-full object-cover rounded-xl" alt="Layout Image" />
+      </div>
+				</div>
+			</div>
+	</section>
+</div>
+
+
+
   
   )
 }

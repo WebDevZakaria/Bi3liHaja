@@ -35,15 +35,15 @@ export default function ImgMediaCard() {
         <div className='mx-[300px] p-8 flex flex-col lg:flex-row space-x-8'>
           {products.map(product=>(
              <div class="max-w-xl ">
-             <div class="bg-white shadow-md rounded-lg max-w-sm dark:bg-gray-800 dark:border-gray-700" key={product.id}>
-               <a href="#">
+             <div class="bg-white shadow-md rounded-lg max-w-sm dark:bg-gray-800 dark:border-gray-700" key={product._id}>
+               <Link to={`/products/${product._id}`}>
                  <img class="rounded-t-lg p-8" src={product.image} alt="product image" />
-                   </a>
+                   </Link>
                  <div class="px-5 pb-5">
-                   <a href="#">
+                   <Link to={`/products/${product._id}`}>
                      <h3 class="text-gray-900 font-semibold text-xl tracking-tight dark:text-white">{product.name}
                        </h3>
-                   </a>
+                   </Link>
                    <div class="flex items-center mt-2.5 mb-5">
                      <svg class="w-5 h-5 text-yellow-300" fill="currentColor" viewBox="0 0 20 20"
                        xmlns="http://www.w3.org/2000/svg">
