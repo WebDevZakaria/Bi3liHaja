@@ -8,6 +8,7 @@ import ResponsiveAppBar from './component/ResponsiveAppBar';
 import AddToCard from './screens/AddToCard';
 import Footer from './component/Footer';
 import LoginScreen from './screens/LoginScreen';
+import RegisterScreen from './screens/RegisterScreen';
 
 function App() {
 
@@ -25,6 +26,8 @@ function App() {
         <Route path='/products/:id' element = {<ProductScreen/>} />
         <Route path='/addtocard/' element = {<AddToCard/>} />
         <Route path='/login/' element = {<LoginScreen/>} />
+        <Route path='/Register/' element = {<RegisterScreen/>} />
+
 
       </Routes>
 

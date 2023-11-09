@@ -176,7 +176,7 @@ function ResponsiveAppBar() {
            <Link to = '/login'> تسجيل الدخول</Link>
           </Box>
           <Box className = "ml-8">
-            انشاء حساب
+           <Link to ='/register'>انشاء حساب</Link>
           </Box>
         </Toolbar>
       </Container>
