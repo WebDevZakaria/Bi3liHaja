@@ -3,6 +3,9 @@ import ImgMediaCard from '../component/ImgMediaCard'
 import Testimonial from '../component/Testimonial'
 import Team from '../component/Team'
 import HeroScreen from '../component/HeroScreen'
+import ShowCaractiristic from '../component/ShowCaractiristic'
+import Market from '../component/Market'
+
 
 function HomeScreen() {
   
@@ -10,9 +13,13 @@ function HomeScreen() {
 
     <section>
       <HeroScreen />
+      <Market />
       <ImgMediaCard /> 
-      <Testimonial />   
       <Team />
+      
+      <ShowCaractiristic />
+      <Testimonial />   
+      
     </section>
 
   )

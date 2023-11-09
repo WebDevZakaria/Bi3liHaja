@@ -6,11 +6,10 @@ import SHOP7 from '../images/shop7.png'
 import SHOP8 from '../images/shop8.png'
 import SHOP9 from '../images/shop9.png'
 
-import CAR from '../images/car.png'
-import COMPUTER from '../images/computer.png'
 
-function Team() {
-  const responsive = {
+function CarouselCategory() {
+    
+const responsive = {
     desktop: {
       breakpoint: { max: 4000, min: 1024 },
       items: 3,
@@ -28,11 +27,7 @@ function Team() {
     }
   };
   return (
-    <div class="container my-24 mx-auto md:px-6">
-      <section class="mb-32 text-center">
-        <h2 class="mb-32 text-3xl font-bold">
-        Shop by  <u class="text-primary dark:text-primary-400">Category</u>
-        </h2>
+    <div class="container my-24 mx-auto md:px-6 mb-32 text-center">
         <Carousel
   swipeable={false}
   draggable={false}
@@ -44,14 +39,13 @@ function Team() {
   keyBoardControl={true}
   customTransition="all .5"
   transitionDuration={500}
-  
+  containerClass="carousel-container"
   removeArrowOnDeviceType={["tablet", "mobile"]}
   dotListClass="custom-dot-list-style"
-  itemClass="carousel-item-padding-40-px"
-  className='h-[400px]'
+  itemClass="carousel-item-padding-40-py"
 >
-        
-          <div class="mb-24 md:mb-0">
+
+<div class="mb-24 md:mb-0">
             <div
               class="block h-full rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
               <div class="flex justify-center">
@@ -67,18 +61,19 @@ function Team() {
               </div>
             </div>
           </div>
-    
-          <div class="mb-24 md:mb-0">
+
+  <div class="mb-24 md:mb-0">
             <div
               class="block h-full rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
               <div class="flex justify-center">
                 <div class="flex justify-center -mt-[75px]">
-                  <img src={COMPUTER}
+                  <img src={SHOP7}
                     class="mx-auto rounded-full shadow-lg dark:shadow-black/20 w-[150px]" alt="Avatar" />
                 </div>
               </div>
               <div class="p-6">
                 <h5 class="mb-4 text-lg font-bold">الأجهزة الالكترونية</h5>
+                <p class="mb-6">Marketing expert</p>
               
               </div>
             </div>
@@ -101,28 +96,28 @@ function Team() {
             </div>
           </div>
 
-       
           <div class="">
             <div
               class="block h-full rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
               <div class="flex justify-center">
                 <div class="flex justify-center -mt-[75px]">
-                  <img src={CAR}
+                  <img src={SHOP9}
                     class="mx-auto rounded-full shadow-lg dark:shadow-black/20 w-[150px]" alt="Avatar" />
                 </div>
               </div>
               <div class="p-6">
-                <h5 class="mb-4 text-lg font-bold">بيع السيارات</h5>
+                <h5 class="mb-4 text-lg font-bold">بيع المنازل</h5>
                 <p class="mb-6"></p>
                 
               </div>
             </div>
           </div>
 
-        </Carousel>;
-      </section>
+  
+</Carousel>;
+      
     </div>
   )
 }
 
-export default Team
+export default CarouselCategory

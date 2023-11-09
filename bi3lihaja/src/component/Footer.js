@@ -1,17 +1,15 @@
 import React from 'react'
-
+import FOOT from '../images/Fotterimage.png'
 function Footer() {
   return (
     <footer class="bg-white lg:grid lg:grid-cols-5">
     <div class="relative block h-32 lg:col-span-2 lg:h-full">
       <img
-        src="https://cdn.pixabay.com/photo/2019/10/10/08/11/shopping-4538982_1280.jpg"
-        
+        src={FOOT}
         alt=""
         class="absolute inset-0 h-full w-full object-cover"
       />
     </div>
-  
     <div class="px-4 py-16 sm:px-6 lg:col-span-3 lg:px-8">
       <div class="grid grid-cols-1 gap-8 sm:grid-cols-2">
         <div>

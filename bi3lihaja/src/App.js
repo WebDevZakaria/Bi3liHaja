@@ -7,6 +7,7 @@ import ResponsiveAppBar from './component/ResponsiveAppBar';
 //import { ChakraProvider } from '@chakra-ui/react'
 import AddToCard from './screens/AddToCard';
 import Footer from './component/Footer';
+import LoginScreen from './screens/LoginScreen';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
         <Route path='/' element = {<HomeScreen/>} />
         <Route path='/products/:id' element = {<ProductScreen/>} />
         <Route path='/addtocard/' element = {<AddToCard/>} />
+        <Route path='/login/' element = {<LoginScreen/>} />
 
       </Routes>
 

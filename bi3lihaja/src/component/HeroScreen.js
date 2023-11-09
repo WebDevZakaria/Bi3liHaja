@@ -29,8 +29,7 @@ function HeroScreen() {
 			<div class="flex items-center">
 				<div class="w-1/2">
 					<h1 class="text-5xl font-medium mb-6">اختر ولايتك و قم ببيع  <br /> اي شئ لديك</h1>
-					<p class="text-xl mb-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra
-						euismod odio, gravida pellentesque urna varius vitae.</p>
+					<p class="w-[240px] text-xl mb-12 text-indigo-600">لديك شئ   لا تحتاجه ؟ تعتقد أن هناك من يحتاجه و تريد بيعه ؟ قم بنشره الان و احصل على أفضل العروض</p>
            
 					<a href="#" class="bg-indigo-500 text-white py-4 px-12 mx-8  rounded-full hover:bg-indigo-600">     تسوق    الان        </a>
           <a href="#" class="bg-indigo-500 text-white py-4 px-12 rounded-full hover:bg-indigo-600">   تسجيل   الدخول  </a>

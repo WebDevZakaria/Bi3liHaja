@@ -16,9 +16,10 @@ import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import SearchAppBar from './SearchAppBar';
 import { Flex, Text } from '@radix-ui/themes';
+import { Link } from 'react-router-dom'
 
 
-const pages = ['Products', 'Category', 'Wilayat'];
+const pages = ['كل المنتجات', 'تصنيفات', 'الولايات'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 
@@ -170,6 +171,12 @@ function ResponsiveAppBar() {
                 </MenuItem>
               ))}
             </Menu>
+          </Box>
+          <Box className = "ml-8">
+           <Link to = '/login'> تسجيل الدخول</Link>
+          </Box>
+          <Box className = "ml-8">
+            انشاء حساب
           </Box>
         </Toolbar>
       </Container>

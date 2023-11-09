@@ -102,8 +102,8 @@ useEffect(()=>{
 
     </div>
     <div>
-      <h1 className='text-[40px] mx-[50px] mt-8'>{product.name}</h1>
-      <p className='mx-4 mt-8 mb-8'>{product.description}</p>
+      <h1 className='text-[40px] mx-[50px] mt-8'><h1 className='mx-[380px]'>اسم المنتج:</h1><h1 className='mx-[400px] text-[30px] font-semibold text-cyan-400'>{product.name}</h1></h1>
+      <p className='w-[340px] mx-[370px] mt-8 mb-8 text-[20px]'>{product.description}</p>
     </div>
     <div className='ml-16 mb-28'>
     <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
@@ -117,7 +117,10 @@ useEffect(()=>{
           />
         </ImageListItem>
       ))}
+
     </ImageList>
+
+    <h1 className='text-[40px] mx-28 mt-8 mb-8 font-semibold'>معرض الصور</h1>
     </div>
     </div>
 
@@ -127,7 +130,7 @@ useEffect(()=>{
 
         <div class="mb-2 flex justify-between">
           <p class="text-gray-700 text-left">السعر</p>
-          <p class="text-gray-700">2000 DA</p>
+          <p class="text-gray-700">{product.price} DA</p>
         </div>
         <div class="flex justify-between">
           <p class="text-gray-700">توصيل</p>

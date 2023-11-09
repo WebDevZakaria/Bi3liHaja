@@ -8,7 +8,7 @@ function Testimonial() {
 
   return (
 
-    <div class="container my-24 mx-auto md:px-6">
+    <div class="container my-24 mx-auto md:px-6 pt-48">
   <section class="mb-32 text-center lg:text-left">
     <div class="py-12 md:px-6 md:px-12">
       <div class="container mx-auto xl:px-32">
@@ -17,26 +17,35 @@ function Testimonial() {
             <div
               class="relative z-[1] block rounded-lg bg-[hsla(0,0%,100%,0.55)] px-6 py-12 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] backdrop-blur-[25px] dark:bg-[hsla(0,0%,5%,0.7)] dark:shadow-black/20 md:px-12 lg:-mr-14">
               <h2 class="mb-2 text-3xl font-bold text-primary dark:text-primary-400">
-                About Us
+              معلومات عنا
               </h2>
-              <p class="mb-4 font-semibold">Bi3li Haja</p>
+              <p class="mb-4 font-semibold">بيعلي حاجة</p>
               <p class="mb-6 text-neutral-500 dark:text-neutral-300">
-                Nunc tincidunt vulputate elit. Mauris varius purus malesuada
-                neque iaculis malesuada. Aenean gravida magna orci, non
-                efficitur est porta id. Donec magna diam.
+              هل لديك أثاث لم يعد يلبي احتياجاتك؟
+
+هل لديك أجهزة إلكترونية لم تعد تستخدمها؟
+
+إذا كان لديك أجهزة إلكترونية لم تعد تستخدمها، فلماذا لا تبيعها على موقعنا الإلكتروني وتستبدلها بأجهزة جديدة؟
+<br/>
+              وقعنا الإلكتروني هو المكان المثالي للتخلص من الأشياء التي لم تعد تحتاجها وجني بعض المال الإضافي في نفس الوقت.
+
+يمكنك بيع أي شيء تقريبًا على موقعنا الإلكتروني، بما في ذلك الملابس والأثاث والأجهزة الإلكترونية والكتب والألعاب والمزيد. إنه لأمر مدهش عدد الأشخاص الذين يبحثون عن الأشياء التي تريد التخلص منها.
+
+لبيع شيء على موقعنا الإلكتروني، ببساطة قم بإنشاء حساب، وخذ بعض الصور للعنصر الخاص بك، واكتب وصفًا مفيدًا. بمجرد إدراج عنصر، يمكن للمشترين المحتملين العثور عليه والاتصال بك بشأنه.
               </p>
               <p class="mb-6 text-neutral-500 dark:text-neutral-300">
-                Ad, at blanditiis quaerat laborum officia incidunt
-                cupiditate dignissimos voluptates eius aliquid minus
-                praesentium! Perferendis et totam ipsum ex aut earum libero
-                accusamus voluptas quod numquam saepe, consequuntur nihil
-                quia tenetur consequatur. Quis, explicabo deserunt quasi
-                assumenda ea maiores nulla, et dolor saepe praesentium natus
-                error reiciendis voluptas iste. Esse, laudantium ipsum
-                animi, quos voluptatibus atque vero repellat sit eligendi
-                autem maiores quasi cum aperiam. Aperiam rerum culpa
-                accusantium, ducimus deserunt aliquid alias vitae quasi
-                corporis placeat vel maiores explicabo commodi!
+              يما يلي بعض النصائح لمساعدتك على بيع الأشياء التي لم تعد تحتاجها على موقعنا الإلكتروني:
+<br/>
+التقط صورًا جيدة: الصور عالية الجودة هي مفتاح بيع شيء عبر الإنترنت. تأكد من أن صورك واضحة ومضاءة جيدًا.
+اكتب وصفًا مفصلاً: اكتب وصفًا مفيدًا يشمل جميع المعلومات المهمة حول عنصر مثل العلامة التجارية والحالة والمقاس.
+حدد سعرًا عادلًا: حدد سعرًا عادلًا لعنصر بناءً على حالته وقيمته السوقية.
+كن متواصلًا: كن متواصلًا مع المشترين المحتملين ورد على أسئلتهم بسرعة.
+<br/>
+مع موقعنا الإلكتروني، من السهل والآمن التخلص من الأشياء التي لم تعد تحتاجها وجني بعض المال الإضافي في نفس الوقت. فماذا تنتظر؟ ابدأ في البيع اليوم!
+
+بالإضافة إلى مساعدتك في بيع الأشياء التي لم تعد تحتاجها، يمكننا أيضًا مساعدتك في العثور على أشياء رائعة لشرائها. لدينا مجموعة كبيرة من المنتجات للبيع من أشخاص آخرين مثلك.
+
+فلماذا لا تتخلص من الأشياء التي لم تعد تحتاجها وتستخدم الأموال لشراء شيء جديد؟ تصفح موقعنا اليوم وابدأ التسوق!
               <ul class="flex justify-center lg:justify-start">
                 <li>
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 96 960 960"
