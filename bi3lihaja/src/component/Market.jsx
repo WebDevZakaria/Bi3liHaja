@@ -20,7 +20,7 @@ function Market() {
 
 </div>
 
-<div className='mx-60 flex flex-col lg:flex-row space-x-[200px] '>
+<div className='mx-[350px] flex flex-col lg:flex-row space-x-[200px] '>
     <div className='w-[500px]'>
     <img src={SHOP3} />
     </div>

@@ -20,8 +20,6 @@ import { Link } from 'react-router-dom'
 
 
 const pages = ['كل المنتجات', 'تصنيفات', 'الولايات'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
 
 function ResponsiveAppBar() {
   
@@ -127,15 +125,16 @@ function ResponsiveAppBar() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
+              <Button sx={{ my: 2, color: 'white', display: 'block' }} >
+               كل المنتجات
               </Button>
-            ))}
+              <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+             تصنيفات
+            </Button>
+            <Button sx={{ my: 2, color: 'white', display: 'block' }} >
+          الولايات
+            </Button>
+            
           </Box>
 
           <Box sx={{ flexGrow: 1,width:'650px', display: { xs: 'none', md: 'flex' } }}>
@@ -165,11 +164,16 @@ function ResponsiveAppBar() {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+               <Link to ='/profile'> <MenuItem >
+                  <Typography textAlign="center">Profile</Typography>
                 </MenuItem>
-              ))}
+                </Link>
+            
+                <MenuItem >
+                  <Typography textAlign="center">Logout</Typography>
+                </MenuItem>
+
+
             </Menu>
           </Box>
           <Box className = "ml-8">

@@ -9,6 +9,11 @@ import AddToCard from './screens/AddToCard';
 import Footer from './component/Footer';
 import LoginScreen from './screens/LoginScreen';
 import RegisterScreen from './screens/RegisterScreen';
+import ShippingScreen from './screens/ShippingScreen';
+import ProfileScreen from './screens/ProfileScreen';
+
+
+
 
 function App() {
 
@@ -27,8 +32,8 @@ function App() {
         <Route path='/addtocard/' element = {<AddToCard/>} />
         <Route path='/login/' element = {<LoginScreen/>} />
         <Route path='/Register/' element = {<RegisterScreen/>} />
-
-
+        <Route path='/shipping/' element = {<ShippingScreen/>} />
+        <Route path='/profile/' element = {<ProfileScreen/>} />
       </Routes>
 
     </main>
@@ -37,7 +42,6 @@ function App() {
 
     </BrowserRouter>
 
-    
   );
 }
 

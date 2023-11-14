@@ -139,16 +139,21 @@ const excludedCountries = ['gb', 'fr'];
           <hr class="my-6 border-gray-300 w-full" />
     
           <button type="button" class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
+
                 <div class="flex items-center justify-center">
-                
+
                 <span class="ml-4">
                 تسجيل الدخول بحساب غوغل
                 </span>
+
                 </div>
+
               </button>
     
           <p class="mt-8"> لديك حساب? <a href="#" class="text-blue-500 hover:text-blue-700 font-semibold">   تسجيل الدخول 
-                  </a></p>
+                  </a>
+
+                  </p>
         </div>
       </div>
     
@@ -158,3 +163,4 @@ const excludedCountries = ['gb', 'fr'];
 }
 
 export default RegisterScreen
+

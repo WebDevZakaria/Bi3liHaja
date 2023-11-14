@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function AddToCard() {
 
@@ -96,7 +97,8 @@ function AddToCard() {
             <p class="text-sm text-gray-700"></p>
           </div>
         </div>
-        <button class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">اضف الى السلة</button>
+        <Link to='/shipping'> <button class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">تأكيد الطلبية
+        </button></Link>
       </div>
     </div>
   </div>

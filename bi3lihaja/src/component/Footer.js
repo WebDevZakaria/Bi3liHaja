@@ -159,19 +159,19 @@ function Footer() {
             <ul class="mt-6 space-y-4 text-sm">
               <li>
                 <a href="#" class="text-gray-700 transition hover:opacity-75">
-                  1on1 Coaching
+                 بيع
                 </a>
               </li>
   
               <li>
                 <a href="#" class="text-gray-700 transition hover:opacity-75">
-                  Company Review
+                شراء
                 </a>
               </li>
   
               <li>
                 <a href="#" class="text-gray-700 transition hover:opacity-75">
-                  Accounts Review
+                  
                 </a>
               </li>
   
@@ -238,7 +238,7 @@ function Footer() {
           </ul>
   
           <p class="mt-8 text-xs text-gray-500 sm:mt-0">
-            &copy; 2022. Company Name. All rights reserved.
+            &copy; 2023. Bi3liHaja. All rights reserved.
           </p>
         </div>
       </div>
