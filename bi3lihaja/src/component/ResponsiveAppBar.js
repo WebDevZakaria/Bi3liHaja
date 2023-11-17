@@ -17,6 +17,7 @@ import InputBase from '@mui/material/InputBase';
 import SearchAppBar from './SearchAppBar';
 import { Flex, Text } from '@radix-ui/themes';
 import { Link } from 'react-router-dom'
+import ZAKARIA from '../images/zedk.jpg'
 
 
 const pages = ['كل المنتجات', 'تصنيفات', 'الولايات'];
@@ -145,7 +146,7 @@ function ResponsiveAppBar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Remy Sharp" src={ZAKARIA} />
               </IconButton>
             </Tooltip>
             <Menu
@@ -165,7 +166,11 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
                <Link to ='/profile'> <MenuItem >
-                  <Typography textAlign="center">Profile</Typography>
+                  <Typography textAlign="center">حسابك</Typography>
+                </MenuItem>
+                </Link>
+                <Link to ='/addProduct'> <MenuItem >
+                  <Typography textAlign="center">اضف منتج</Typography>
                 </MenuItem>
                 </Link>
             

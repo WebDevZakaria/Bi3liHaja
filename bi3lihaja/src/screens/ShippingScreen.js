@@ -1,6 +1,6 @@
 import React from 'react'
 import LIVRER from '../images/livrer.png'
-
+import { Link } from 'react-router-dom'
 
 function ShippingScreen() {
     
@@ -138,17 +138,13 @@ function ShippingScreen() {
                        
                     </div>
                     <div>
-                        <button class="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-2 font-semibold"><i class="mdi mdi-lock-outline mr-1"></i>تأكيد</button>
+                        <Link to = '/success'><button class="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-2 font-semibold"><i class="mdi mdi-lock-outline mr-1"></i>تأكيد</button></Link>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="p-5">
-        <div class="text-center text-gray-400 text-sm">
-            <a href="https://www.buymeacoffee.com/scottwindon" target="_blank" class="focus:outline-none underline text-gray-400"><i class="mdi mdi-beer-outline"></i>Buy me a beer</a> and help support open-resource
-        </div>
-    </div>
+    
 </div>
     
   )

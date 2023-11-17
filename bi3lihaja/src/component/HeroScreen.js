@@ -1,6 +1,26 @@
 import React from 'react'
+import { Carousel } from 'react-carousel-minimal';
+import COVER1 from '../images/cover1.png'
+import COVER2 from '../images/cover2.png'
+
 
 function HeroScreen() {
+  const data = [
+    {
+      image: "https://cdn.pixabay.com/photo/2017/03/13/17/26/ecommerce-2140603_1280.jpg",
+      caption: "بيع الحواسيب"
+      
+    },
+    {
+      image: "https://cdn.pixabay.com/photo/2018/05/20/09/28/ecommerce-3415340_1280.jpg",
+      caption: "بيع المنازل"
+    },
+    {
+      image: "https://images.pexels.com/photos/7195232/pexels-photo-7195232.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      caption: "بيع الاثاث المنزلي"
+    },
+  ]
+  
   return (
 
 /*<div class="px-6 py-12 text-center md:px-12 lg:text-left">
@@ -24,22 +44,29 @@ function HeroScreen() {
   </div>*/
 
 <div class="bg-gray-50 flex items-center">
-	<section class="bg-cover bg-center py-32 w-full" style={{"background-image": "url('https://images.pexels.com/photos/7195232/pexels-photo-7195232.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')"}}>
-		<div class="container mx-auto text-left text-white">
-			<div class="flex items-center">
-				<div class="w-1/2">
-					<h1 class="text-5xl font-medium mb-6">اختر ولايتك و قم ببيع  <br /> اي شئ لديك</h1>
-					<p class="w-[240px] text-xl mb-12 text-indigo-600">لديك شئ   لا تحتاجه ؟ تعتقد أن هناك من يحتاجه و تريد بيعه ؟ قم بنشره الان و احصل على أفضل العروض</p>
-           
-					<a href="#" class="bg-indigo-500 text-white py-4 px-12 mx-8  rounded-full hover:bg-indigo-600">     تسوق    الان        </a>
-          <a href="#" class="bg-indigo-500 text-white py-4 px-12 rounded-full hover:bg-indigo-600">   تسجيل   الدخول  </a>
-       
-				</div>
-				<div class="w-1/2 pl-16">
-					<img src="https://images.pexels.com/photos/3806753/pexels-photo-3806753.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" class=" w-full object-cover rounded-xl" alt="Layout Image" />
-      </div>
-				</div>
-			</div>
+	<section class="bg-cover bg-center py-32 w-full" style={{"background-image": "url('')"}}>
+    <Carousel data = {data}    time={2000}
+            width="2250px"
+            height="700px"
+            radius="10px"
+            slideNumber={true}
+            captionPosition="bottom"
+            captionSize ="60px"
+            automatic={true}
+            dots={true}
+            pauseIconColor="white"
+            pauseIconSize="40px"
+            slideBackgroundColor="darkgrey"
+            slideImageFit="cover"
+            style={{
+              textAlign: "center",
+              fontSize:"250px",
+              maxWidth: "2250px",
+              maxHeight: "700px",
+              marginTop: "-120px",
+            }}>
+	
+      </Carousel>
 	</section>
 </div>
 

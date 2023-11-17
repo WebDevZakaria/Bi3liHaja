@@ -7,7 +7,7 @@ import SHOP5 from '../images/shop5.png'
 
 function Market() {
   return (
-    <section>
+    <section className='mt-[-140px]'>
 
     <div className="relative mx-auto py-4 mt-8 w-full  max-w-7xl text-white">
     <img src={SHOP1} />
@@ -20,7 +20,7 @@ function Market() {
 
 </div>
 
-<div className='mx-[350px] flex flex-col lg:flex-row space-x-[200px] '>
+<div className='mx-[350px]  flex flex-col lg:flex-row space-x-[200px] '>
     <div className='w-[500px]'>
     <img src={SHOP3} />
     </div>
