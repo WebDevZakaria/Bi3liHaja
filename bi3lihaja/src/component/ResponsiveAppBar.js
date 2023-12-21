@@ -20,6 +20,7 @@ import { Link } from 'react-router-dom'
 import ZAKARIA from '../images/zedk.jpg'
 
 
+
 const pages = ['كل المنتجات', 'تصنيفات', 'الولايات'];
 
 function ResponsiveAppBar() {
@@ -126,9 +127,9 @@ function ResponsiveAppBar() {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              <Button sx={{ my: 2, color: 'white', display: 'block' }} >
+              <Link to='/filters'><Button sx={{ my: 2, color: 'white', display: 'block' }} >
                كل المنتجات
-              </Button>
+              </Button></Link>
               <Button sx={{ my: 2, color: 'white', display: 'block' }}>
              تصنيفات
             </Button>

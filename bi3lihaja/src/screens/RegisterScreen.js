@@ -1,13 +1,72 @@
 import React from 'react'
-import { useState } from 'react';
-import PhoneInput from 'react-phone-input-2';
-import 'react-phone-input-2/lib/style.css';
+import { useState,useEffect } from 'react';
+
+import { useDispatch,useSelector } from 'react-redux'
+import { useLocation ,useNavigate} from 'react-router-dom'
+import { register } from '../actions/userActions';
+
+
 
 function RegisterScreen() {
 
-const [phone, setPhone] = useState('');
-const specificCountries = ['dz'];
-const excludedCountries = ['gb', 'fr']; 
+  const location =  useLocation()
+  let history = useNavigate();
+
+  const  [name,setName] = useState('')
+  const  [lastname,setLastname] = useState('')
+  const  [email,setEmail] = useState('')
+  const [phonenumber, setPhonenumber] = useState('');
+  const [wilaya, setWilaya] = useState('');
+
+  const  [password,setPassword] = useState('')
+  const  [confirmPassword,setConfirmPassword] = useState('')
+
+
+  const dispatch = useDispatch()
+
+  const redirect = location.search ? location.search.split('=')[1]: '/'
+
+  const userRegister = useSelector(state=>state.userRegister)
+
+  const { userInfo } = userRegister
+
+  useEffect(()=>{
+
+      if (userInfo) {
+
+          history(redirect)
+
+      }
+
+  },[history,userInfo,redirect])
+
+
+
+  const handleWilayaChange = (event) => {
+    setWilaya(event.target.value);
+  };
+
+
+  const submitHandler=(e)=>{
+
+      e.preventDefault()
+
+      if(password !== confirmPassword){
+
+          alert(' لديك خطا عند تاكيد الباسوورد')
+
+      }
+
+      else 
+
+      {
+
+          dispatch(register(name,lastname,email,phonenumber,wilaya,password))
+
+      }
+
+  }
+
 
 
   return (
@@ -26,116 +85,130 @@ const excludedCountries = ['gb', 'fr'];
     
           <h1 class="text-xl md:text-2xl font-bold leading-tight mt-12">انشاء حساب جديد </h1>
     
-          <form class="mt-6" action="#" method="POST">
+          <form class="mt-6"  method="POST" onSubmit = {submitHandler}>
             <div>
               <label class="block text-gray-700">اللقب</label>
-              <input type="text" name="" id="" placeholder="ادخل لقبك" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required />
+              <input type="text" name="" id="" placeholder="ادخل لقبك" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete required
+               value={lastname}    onChange ={(e)=>setLastname(e.target.value)}
+               />
             </div>
     
             <div class="mt-4">
               <label class="block text-gray-700"> الاسم</label>
-              <input type="text" name="" id="" placeholder="ادخل اسمك" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
-                    focus:bg-white focus:outline-none" required />
+              <input type="text"  id="" placeholder="ادخل اسمك" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+                    focus:bg-white focus:outline-none" required  value={name} onChange ={(e)=>setName(e.target.value)} />
             </div>
             
             <div class="mt-4">
               <label class="block text-gray-700"> الايميل</label>
-              <input type="email" name="" id="" placeholder="ادخل ايميلك" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
-                    focus:bg-white focus:outline-none" required />
+              <input type="email"  id="" placeholder="ادخل ايميلك" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+                    focus:bg-white focus:outline-none" required value={email} onChange ={(e)=>setEmail(e.target.value)}  />
             </div>
-            
+ 
             <div class="mt-4">
               <label class="block text-gray-700"> رقم الهاتف</label>
-              <div className='w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
-                    focus:bg-white focus:outline-none'>
-              <PhoneInput
-      defaultCountry="dz"
-      value={phone}
-      onChange={(phone) => setPhone(phone)}
-      onlyCountries={specificCountries}
-      excludeCountries={excludedCountries}
-      
-    />
-    </div>
-            </div>
+           
             
+              <input type="text"  id="" placeholder="ادخل رقم الهاتف" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+                    focus:bg-white focus:outline-none" required  value={phonenumber} onChange ={(e)=>setPhonenumber(e.target.value)} />    
+    </div>
+           
+                
+       
             <div class="mt-4">
               <label class="block text-gray-700">ولايتك</label>
-              <select id="wilaya" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
-                    focus:bg-white focus:outline-none">
-    <option value="red">Wilaya d'Adrar </option>
-    <option value="green">Wilaya de Chlef</option>
-    <option value="blue">Wilaya de Laghouat</option>
-    <option value="blue">Wilaya d'Oum El Bouaghi</option>
-    <option value="Wilaya de Batna">Wilaya de Batna</option>
-    <option value="Wilaya de Béjaïa">Wilaya de Béjaïa</option>
-    <option value="	Wilaya de Biskra">	Wilaya de Biskra *</option>
-    <option value="Wilaya de Béchar">Wilaya de Béchar *</option>
-    <option value="Wilaya de Blida">Wilaya de Blida</option>
-    <option value="Wilaya de Bouira">Wilaya de Bouira</option>
-    <option value="Wilaya de Tamanrasset">Wilaya de Tamanrasset</option>
-    <option value="Wilaya de Tébessa">Wilaya de Tébessa</option>
-    <option value="	Wilaya de Tlemcen">	Wilaya de Tlemcen</option>
-    <option value="Wilaya de Tiaret">Wilaya de Tiaret</option>
-    <option value="Wilaya de Tizi Ouzou	">Wilaya de Tizi Ouzou	</option>
-    <option value="Wilaya d'Alger">Wilaya d'Alger</option>
-    <option value="Wilaya de Djelfa">Wilaya de Djelfa</option>
-    <option value="Wilaya de Jijel">Wilaya de Jijel</option>
-    <option value="Wilaya de Sétif">Wilaya de Sétif</option>
-    <option value="	Wilaya de Saïda">	Wilaya de Saïda</option>
-    <option value="Wilaya de Skikda">Wilaya de Skikda</option>
-    <option value="	Wilaya de Sidi Bel Abbès">	Wilaya de Sidi Bel Abbès</option>
-    <option value="Wilaya d'Annaba">Wilaya d'Annaba</option>
-    <option value="Wilaya de Guelma">Wilaya de Guelma</option>
-    <option value="Wilaya de Constantine">Wilaya de Constantine</option>
-    <option value="Wilaya de Médéa">Wilaya de Médéa</option>
-    <option value="	Wilaya de Mostaganem">	Wilaya de Mostaganem</option>
-    <option value="Wilaya de M'Sila">Wilaya de M'Sila</option>
-    <option value="Wilaya de Mascara">Wilaya de Mascara</option>
-    <option value="	Wilaya de Ouargla ">	Wilaya de Ouargla </option>
-    <option value="Wilaya d'Oran">Wilaya d'Oran</option>
-    <option value="	Wilaya d'El Bayadh">	Wilaya d'El Bayadh</option>
-    <option value="	Wilaya d'Illizi">	Wilaya d'Illizi</option>
-    <option value="	Wilaya de Bordj Bou Arreridj">	Wilaya de Bordj Bou Arreridj</option>
-    <option value="	Wilaya de Boumerdès">	Wilaya de Boumerdès</option>
-    <option value="	Wilaya d'El Tarf">	Wilaya d'El Tarf</option>
-    <option value="Wilaya de Tindouf">Wilaya de Tindouf</option>
-    <option value="	Wilaya de Tissemsilt">	Wilaya de Tissemsilt</option>
-    <option value="Wilaya d'El Oued">Wilaya d'El Oued</option>
-    <option value="Wilaya de Khenchela">Wilaya de Khenchela</option>
-    <option value="	Wilaya de Souk Ahras">	Wilaya de Souk Ahras</option>
-    <option value="Wilaya de Tipaza">Wilaya de Tipaza</option>
-    <option value="	Wilaya de Mila">	Wilaya de Mila</option>
-    <option value="Wilaya d'Aïn Defla">Wilaya d'Aïn Defla</option>
-    <option value="	Wilaya de Naâma">	Wilaya de Naâma</option>
-    <option value="Wilaya d'Aïn Témouchent">Wilaya d'Aïn Témouchent</option>
-    <option value="	Wilaya de Ghardaïa ">	Wilaya de Ghardaïa </option>
-    <option value="Wilaya de Relizane">Wilaya de Relizane</option>
-    <option value="Wilaya de Timimoun ">Wilaya de Timimoun </option>
-    <option value="Wilaya de Bordj Badji Mokhtar">Wilaya de Bordj Badji Mokhtar</option>
-    <option value="	Wilaya d'Ouled Djellal">	Wilaya d'Ouled Djellal</option>
-    <option value="	Wilaya de Béni Abbès">	Wilaya de Béni Abbès</option>
-    <option value="	Wilaya d'In Salah ">	Wilaya d'In Salah </option>
-    <option value="Wilaya d'In Guezzam">Wilaya d'In Guezzam</option>
-    <option value="	Wilaya de Touggourt">	Wilaya de Touggourt</option>
-    <option value="Wilaya de Djanet">Wilaya de Djanet</option>
-    <option value="Wilaya d'El M'Ghair">Wilaya d'El M'Ghair</option>
-    <option value="	Wilaya d'El Meniaa ">	Wilaya d'El Meniaa </option>
+              <select  class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+                    focus:bg-white focus:outline-none"
+                    value={wilaya} onChange={handleWilayaChange}
+                    >
+    <option value="Wilaya_dAdrar">Wilaya d'Adrar </option>
+    <option value="Wilaya_Chlef">Wilaya de Chlef</option>
+    <option value="Wilaya_Laghouat">Wilaya de Laghouat</option>
+    <option value="Wilaya_Bouaghi">Wilaya d'Oum El Bouaghi</option>
+    <option value="Wilaya_Batna">Wilaya de Batna</option>
+    <option value="Wilaya_Béjaïa">Wilaya de Béjaïa</option>
+    <option value="	Wilaya_Biskra">	Wilaya de Biskra *</option>
+    <option value="Wilaya_Béchar">Wilaya de Béchar *</option>
+    <option value="Wilaya_Blida">Wilaya de Blida</option>
+    <option value="Wilaya_Bouira">Wilaya de Bouira</option>
+    <option value="Wilaya_Tamanrasset">Wilaya de Tamanrasset</option>
+    <option value="Wilaya_Tébessa">Wilaya de Tébessa</option>
+    <option value="	Wilaya_Tlemcen">	Wilaya de Tlemcen</option>
+    <option value="Wilaya_Tiaret">Wilaya de Tiaret</option>
+    <option value="Wilaya_Tizi Ouzou	">Wilaya de Tizi Ouzou	</option>
+    <option value="Wilaya_Alger">Wilaya d'Alger</option>
+    <option value="Wilaya_Djelfa">Wilaya de Djelfa</option>
+    <option value="Wilaya_Jijel">Wilaya de Jijel</option>
+    <option value="Wilaya_Sétif">Wilaya de Sétif</option>
+    <option value="	Wilaya_Saïda">	Wilaya de Saïda</option>
+    <option value="Wilaya_Skikda">Wilaya de Skikda</option>
+    <option value="	Wilaya_Sidi Bel Abbès">	Wilaya de Sidi Bel Abbès</option>
+    <option value="Wilaya_Annaba">Wilaya d'Annaba</option>
+    <option value="Wilaya_Guelma">Wilaya de Guelma</option>
+    <option value="Wilaya_Constantine">Wilaya de Constantine</option>
+    <option value="Wilaya_Médéa">Wilaya de Médéa</option>
+    <option value="	Wilaya_Mostaganem">	Wilaya de Mostaganem</option>
+    <option value="Wilaya_M'Sila">Wilaya de M'Sila</option>
+    <option value="Wilaya_Mascara">Wilaya de Mascara</option>
+    <option value="	Wilaya_Ouargla ">	Wilaya de Ouargla </option>
+    <option value="Wilaya_Oran">Wilaya d'Oran</option>
+    <option value="	Wilaya_Bayadh">	Wilaya d'El Bayadh</option>
+    <option value="	Wilaya_Illizi">	Wilaya d'Illizi</option>
+    <option value="	Wilaya_Bordj Bou Arreridj">	Wilaya de Bordj Bou Arreridj</option>
+    <option value="	Wilaya_Boumerdès">	Wilaya de Boumerdès</option>
+    <option value="	Wilaya_Tarf">	Wilaya d'El Tarf</option>
+    <option value="Wilaya_Tindouf">Wilaya de Tindouf</option>
+    <option value="	Wilaya_Tissemsilt">	Wilaya de Tissemsilt</option>
+    <option value="Wilaya_Oued">Wilaya d'El Oued</option>
+    <option value="Wilaya_Khenchela">Wilaya de Khenchela</option>
+    <option value="	Wilaya_Souk Ahras">	Wilaya de Souk Ahras</option>
+    <option value="Wilaya_Tipaza">Wilaya de Tipaza</option>
+    <option value="	Wilaya_Mila">	Wilaya de Mila</option>
+    <option value="Wilaya_AïnDefla">Wilaya d'Aïn Defla</option>
+    <option value="	Wilaya_Naâma">	Wilaya de Naâma</option>
+    <option value="Wilaya_AïnTémouchent">Wilaya d'Aïn Témouchent</option>
+    <option value="	Wilaya_Ghardaïa ">	Wilaya de Ghardaïa </option>
+    <option value="Wilaya_Relizane">Wilaya de Relizane</option>
+    <option value="Wilaya_Timimoun ">Wilaya de Timimoun </option>
+    <option value="Wilaya_Bordj Badji Mokhtar">Wilaya de Bordj Badji Mokhtar</option>
+    <option value="	Wilaya_OuledDjellal">	Wilaya d'Ouled Djellal</option>
+    <option value="	Wilaya_Béni Abbès">	Wilaya de Béni Abbès</option>
+    <option value="	Wilaya_InSalah ">	Wilaya d'In Salah </option>
+    <option value="Wilaya_InGuezzam">Wilaya d'In Guezzam</option>
+    <option value="	Wilaya_Touggourt">	Wilaya de Touggourt</option>
+    <option value="Wilaya_Djanet">Wilaya de Djanet</option>
+    <option value="Wilaya_ElMGhair">Wilaya d'El M'Ghair</option>
+    <option value="	Wilaya_ElMeniaa ">	Wilaya d'El Meniaa </option>
   </select>
+  {wilaya && <h2 className="mt-3">{wilaya}</h2>}
             </div>
             
+                  
             <div class="mt-4">
               <label class="block text-gray-700"> كلمة السر</label>
-              <input type="text" name="" id="" placeholder="ادخل كلمة السر" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
-                    focus:bg-white focus:outline-none" required />
+              <input type="password" id="" placeholder="ادخل كلمة السر" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+                    focus:bg-white focus:outline-none" required
+                    value = {password} onChange ={(e)=>setPassword(e.target.value)}
+                     />
             </div>
-    
-         
-    
+
+            <div class="mt-4">
+
+              <label class="block text-gray-700">  تاكيد كلمة السر </label>
+
+              <input type="password" id="" placeholder="ادخل كلمة السر" minlength="6" class="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500
+                    focus:bg-white focus:outline-none" required
+
+                    value = {confirmPassword} onChange ={(e)=>setConfirmPassword(e.target.value)}
+
+                     />
+
+            </div>
+
             <button type="submit" class="w-full block bg-indigo-500 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg
                   px-4 py-3 mt-6">انشاء الحساب</button>
           </form>
-    
+
           <hr class="my-6 border-gray-300 w-full" />
     
           <button type="button" class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">

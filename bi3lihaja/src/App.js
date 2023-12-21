@@ -8,12 +8,13 @@ import ResponsiveAppBar from './component/ResponsiveAppBar';
 import AddToCard from './screens/AddToCard';
 import Footer from './component/Footer';
 import LoginScreen from './screens/LoginScreen';
+//import RegisterScreen from './screens/RegisterScreen';
 import RegisterScreen from './screens/RegisterScreen';
 import ShippingScreen from './screens/ShippingScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import OrderSummary from './screens/OrderSummary';
 import AddProductScreen from './screens/AddProductScreen';
-
+import FilterCategoryScreen from './screens/FilterCategoryScreen';
 function App() {
 
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path='/profile/' element = {<ProfileScreen/>} />
         <Route path='/success/' element = {<OrderSummary/>} />
         <Route path='/addProduct/' element = {<AddProductScreen/>} />
+        <Route path='/filters/' element = {<FilterCategoryScreen/>} />
 
       </Routes>
 
