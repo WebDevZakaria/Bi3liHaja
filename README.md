@@ -1,4 +1,6 @@
-<h1 color="red;"> Big Notes: THe Project iss Still In Progess :40% </h1>
+```diff
+<h1> Big Notes: THe Project iss Still In Progess :40% </h1>
+```
 <hr/>
 <h1> Bi3li Haja Marketplace with Django and React </h1>
 
