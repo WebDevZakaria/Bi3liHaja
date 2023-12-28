@@ -9,7 +9,7 @@ The platform operates on a unique one-time selling model,
 ensuring each product can be sold only once. Users can also add various items and wait for admin approval before making them visible on the platform.
 
 <h2>Features</h2>
-<hr/>
+
 
 One-Time Selling: Each product, whether it's a phone, house, car, or home furniture, can be sold only once for a unique and one-time selling experience.
 
@@ -22,7 +22,6 @@ Product Listings: Browse and search for a diverse range of items available for p
 Transaction History: Track the history of products bought and sold.
 
 <h2>Getting Started</h2>
-<hr/>
 
 Follow these instructions to set up and run the  Application locally.
 
