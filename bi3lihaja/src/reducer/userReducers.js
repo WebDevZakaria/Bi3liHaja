@@ -7,6 +7,10 @@ import { USER_REGISTER_SUCCESS } from "../constants/userConstants";
 import { USER_REGISTER_FAIL } from "../constants/userConstants";
 
 
+import { USER_DETAILS_REQUEST } from "../constants/userConstants";
+
+import { USER_DETAILS_SUCCESS } from "../constants/userConstants";
+import { USER_DETAILS_FAIL } from "../constants/userConstants";
 
 
 export const userLoginReducer =(state = {userToken :{}},action) =>{
@@ -91,7 +95,7 @@ export const userRegisterReducer = (state={},action)=>{
 
 }
 
-/*export const userDetailsReducer = (state={ user: [] },action)=>{
+export const userDetailsReducer = (state={ user: [] },action)=>{
 
     switch(action.type){
 
@@ -126,7 +130,7 @@ export const userRegisterReducer = (state={},action)=>{
 
 }
 
-
+/*
 export const userListReducer = (state = { users: [] }, action) => {
       
     switch (action.type) {

@@ -74,3 +74,10 @@ def registerUser(request):
         message = {'detail': 'User With email already exist'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+def getUserProfil(request):
+
+    user = request.user
+    serializers = UserSerializers(user, many=False)
+    return Response(serializers.data)

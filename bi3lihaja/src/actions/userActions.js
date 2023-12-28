@@ -6,6 +6,10 @@ import { USER_REGISTER_REQUEST } from "../constants/userConstants";
 import { USER_REGISTER_SUCCESS } from "../constants/userConstants";
 import { USER_REGISTER_FAIL } from "../constants/userConstants";
 
+import { USER_DETAILS_REQUEST } from "../constants/userConstants";
+import { USER_DETAILS_SUCCESS } from "../constants/userConstants";
+import { USER_DETAILS_FAIL } from "../constants/userConstants";
+
 
 import axios from "axios";
 
@@ -86,6 +90,47 @@ export const login = (email,password) => async(dispatch)=>
 
         }
 
+        export const getUserDetails = (id) => async(dispatch,getState)=> 
+
+    {
+        try{
+    
+            dispatch({type:USER_DETAILS_REQUEST})
+
+            const { 
+                userLogin :{ userInfo },
+           } = getState()
+
+
+
+            const config = {
+                method: 'get',
+                url:  `/api/users/${id}/`,
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + userInfo.token
+                },
+                    data : {},
+            };
+            const { data } = await axios(config);
+
+           
+
+            dispatch({type:USER_DETAILS_SUCCESS,payload:data})    
+        }
+
+        
+        catch(error){    
+
+            dispatch({type:USER_DETAILS_FAIL,payload:error.response && error.response.data.detail 
+                ? error.response.data.detail
+                : error.message,
+    
+            })
+        }
+        }
+
+
 
 /*
         export const resetPassowrd = (email) => async dispatch =>{
@@ -139,46 +184,7 @@ export const login = (email,password) => async(dispatch)=>
 
 
 
-    export const getUserDetails = (id) => async(dispatch,getState)=> 
-
-    {
-        try{
     
-            dispatch({type:USER_DETAILS_REQUEST})
-
-            const { 
-                userLogin :{ userInfo },
-           } = getState()
-
-
-
-            const config = {
-                method: 'get',
-                url:  `/api/users/${id}/`,
-                headers: { 
-                    'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + userInfo.token
-                },
-                    data : {},
-            };
-            const { data } = await axios(config);
-
-           
-
-            dispatch({type:USER_DETAILS_SUCCESS,payload:data})    
-        }
-
-        
-        catch(error){    
-
-            dispatch({type:USER_DETAILS_FAIL,payload:error.response && error.response.data.detail 
-                ? error.response.data.detail
-                : error.message,
-    
-            })
-        }
-        }
-
     export const listUsers = () => async(dispatch,getState)=> 
 
     {

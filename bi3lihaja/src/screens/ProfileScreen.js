@@ -1,7 +1,47 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import ZAKARIA from '../images/zedk.jpg'
 
+import {useNavigate} from 'react-router-dom'
+import { useDispatch,useSelector } from 'react-redux'
+import { getUserDetails } from '../actions/userActions'
+
+
 function ProfileScreen() {
+
+    let history = useNavigate()
+    const dispatch = useDispatch()
+
+    const userDetail = useSelector(state=>state.userDetails)
+    const { user , loading , error } = userDetail
+
+    const userLogin = useSelector(state=>state.userLogin)
+
+    const {userInfo} = userLogin
+    
+    useEffect(()=>{
+
+        if (!userInfo) {
+
+            history('/login')
+
+        }else {
+
+            if (!user || !user.name || userInfo._id!== user._id)
+
+            {
+
+                dispatch(getUserDetails('profile'))
+                
+            } 
+             
+
+            
+
+        }
+        
+    },[dispatch,history,userInfo,user])
+
+
   return (
     <section class="pt-16 bg-blueGray-50">
       <div className='flex flex-col lg:flex-row space-x-[40px] '>
@@ -14,7 +54,7 @@ function ProfileScreen() {
                 <img alt="..." src={ZAKARIA} class="shadow-xl rounded-full h-auto align-middle border-none absolute -m-16 -ml-20 lg:-ml-16 max-w-150-px" />
               </div>
             </div>
-            <div class=" absolute left-[450px] mt-4 border-2 border-yellow-600 rounded-lg px-3 py-2 text-yellow-400 cursor-pointer hover:bg-yellow-600 hover:text-yellow-200 ">
+            <div class=" absolute  left-[650px] lg:left-[450px] mt-4 border-2 border-yellow-600 rounded-lg px-3 py-2 text-yellow-400 cursor-pointer hover:bg-yellow-600 hover:text-yellow-200 ">
             تعديل الملف الشخصي
         </div>
             <div class="w-full px-4 text-center mt-20">
@@ -42,26 +82,31 @@ function ProfileScreen() {
           </div>
           <div class="text-center mt-12">
             <h3 class="text-xl font-semibold leading-normal mb-2 text-blueGray-700 mb-2">
-              Zakaria bou
+              {user.name} {user.last_name}
             </h3>
             <div class="text-sm leading-normal mt-0 mb-2 text-blueGray-400 font-bold uppercase">
               <i class="fas fa-map-marker-alt mr-2 text-lg text-blueGray-400"></i>
-              alger
+              {user.wilaya}
             </div>
            
           </div>
           <div class="mt-10 py-10 border-t border-blueGray-200 text-center">
             <div class="flex flex-wrap justify-center">
-              <div class="w-full lg:w-9/12 px-4">
-                <p class="mb-4 text-lg leading-relaxed text-blueGray-700">
-                  An artist of considerable range, Jenna the name taken
-                  by Melbourne-raised, Brooklyn-based Nick Murphy
-                  writes, performs and records all of his own music,
-                  giving it a warm, intimate feel with a solid groove
-                  structure. An artist of considerable range.
-                </p>
-           
-              </div>
+
+                <div>
+                    <p> <span className='text-[20px] font-semibold '>الايميل:</span> 
+                    <br/>
+                    {user.email}</p>
+
+                    <br/>
+                    <br/>
+
+                    <p> <span className='text-[20px] font-semibold '>رقم الهاتف:</span> 
+                    <br/>
+                    {user.phone_number}</p>
+
+                </div>
+              
             </div>
           </div>
         </div>
