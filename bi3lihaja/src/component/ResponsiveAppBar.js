@@ -18,13 +18,19 @@ import SearchAppBar from './SearchAppBar';
 import { Flex, Text } from '@radix-ui/themes';
 import { Link } from 'react-router-dom'
 import ZAKARIA from '../images/zedk.jpg'
-
-
+import { useSelector,useDispatch } from 'react-redux';
+import { logout } from '../actions/userActions';
 
 const pages = ['كل المنتجات', 'تصنيفات', 'الولايات'];
 
 function ResponsiveAppBar() {
-  
+
+  const userLogin  = useSelector(state=>state.userLogin)
+
+  const {userInfo} = userLogin
+
+  const dispatch = useDispatch()
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -43,6 +49,17 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+ 
+  
+
+
+
+
+  const logoutHandler=()=>{
+
+    dispatch(logout())
+  
+  }
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -143,8 +160,7 @@ function ResponsiveAppBar() {
          <SearchAppBar />
          </Box>
 
-
-          <Box sx={{ flexGrow: 0 }}>
+         { userInfo ? (<Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src={ZAKARIA} />
@@ -176,15 +192,16 @@ function ResponsiveAppBar() {
                 </Link>
             
                 <MenuItem >
-                  <Typography textAlign="center">Logout</Typography>
+                  <Button onClick={logoutHandler}><Typography textAlign="center">Logout</Typography></Button>
                 </MenuItem>
 
 
             </Menu>
-          </Box>
-          <Box className = "ml-8">
+          </Box>): (<Box className = "ml-8">
            <Link to = '/login'> تسجيل الدخول</Link>
-          </Box>
+          </Box>)}
+          
+          
           <Box className = "ml-8">
            <Link to ='/register'>انشاء حساب</Link>
           </Box>

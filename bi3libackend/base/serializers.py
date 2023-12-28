@@ -6,9 +6,9 @@ from Accounts.models import Account
 from rest_framework_simplejwt.tokens import RefreshToken
 
 class UserSerializers(serializers.ModelSerializer):
-    name = serializers.SerializerMethodField(read_only=True)
-    _id = serializers.SerializerMethodField(read_only=True)
 
+    name = serializers.SerializerMethodField(read_only=True)
+    
     isAdmin = serializers.SerializerMethodField(read_only=True)
 
     class Meta:

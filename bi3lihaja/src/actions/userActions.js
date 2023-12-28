@@ -22,7 +22,7 @@ export const login = (email,password) => async(dispatch)=>
         }
 
         const {data } = await axios.post('/api/users/login/'
-        ,{'username':email,'password':password},config)
+        ,{'email':email,'password':password},config)
 
         dispatch({type:USER_LOGIN_SUCCESS,payload:data})
         
@@ -41,16 +41,12 @@ export const login = (email,password) => async(dispatch)=>
     }
 
 
+   export const logout = ()=>(dispatch)=>{
 
-  /*   export const logout = ()=>(dispatch)=>{
-
-        localStorage.removeItem('userInfo')
-        dispatch({type:USER_LOGOUT})
-        dispatch({type:USER_LIST_RESET})
-        dispatch({type:ORDER_LIST_MY_RESET})
+    localStorage.removeItem('userInfo')
         
     }
-    */
+  
 
 
 
