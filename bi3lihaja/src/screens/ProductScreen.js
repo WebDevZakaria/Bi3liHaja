@@ -10,7 +10,7 @@ import Button from '@mui/material/Button';
 import {Link,useParams} from 'react-router-dom'
 import { listProductDetails } from '../actions/productActions'
 import { useDispatch,useSelector } from 'react-redux'
-
+import { useNavigate } from 'react-router-dom';
 import Review from '../component/Review';
 
 
@@ -72,10 +72,19 @@ function ProductScreen() {
 
   const dispatch = useDispatch()
 
+  let history = useNavigate();
 
 const productdetails = useSelector(state=>state.productDetails)
 
 const {loading, error,product} = productdetails
+
+
+const addToCardHandler = ()=>{
+
+  history(`/card/${id}`)
+  
+}
+
 
 useEffect(()=>{
    
@@ -142,7 +151,7 @@ useEffect(()=>{
             <p class="text-lg font-bold">2200 DA</p>
 
         </div>
-       <Link to={`/addtocard/`}> <button class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">اضف الى السلة</button></Link>
+        <button onClick={addToCardHandler} class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">اضف الى السلة</button>
       </div>
 
     </div>

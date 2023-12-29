@@ -114,19 +114,23 @@ export default function ImgMediaCard() {
     <div class="mt-10 grid grid-cols-2 gap-6 lg:mt-16 lg:grid-cols-4 lg:gap-4">
     {products.map(product=>(
       <article class="relative">
+        <Link to={`/products/${product._id}`}>
         <div class="aspect-square overflow-hidden">
           <img class="group-hover:scale-125 h-full w-full object-cover transition-all duration-300" src={product.images} alt="" />
         </div>
+        </Link>
         <div class="absolute top-0 m-1 rounded-full bg-white">
           <p class="text-[10px] rounded-full bg-black p-1 font-bold uppercase tracking-wide text-white sm:px-3 sm:py-1">Sale</p>
         </div>
         <div class="mt-4 flex items-start justify-between">
           <div class="">
             <h3 class="text-xs font-semibold sm:text-sm md:text-base">
-              <a href="#" title="" class="cursor-pointer">
+            <Link to={`/products/${product._id}`} class="cursor-pointer">
+              
                {product.name}
                 <span class="absolute" aria-hidden="true"></span>
-              </a>
+              
+              </Link>
             </h3>
             <div class="mt-2 flex items-center">
               <svg class="block h-3 w-3 align-middle text-black sm:h-4 sm:w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">

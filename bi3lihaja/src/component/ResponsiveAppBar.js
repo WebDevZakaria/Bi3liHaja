@@ -160,6 +160,14 @@ function ResponsiveAppBar() {
          <SearchAppBar />
          </Box>
 
+         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+              <Link to='/card'><Button sx={{ my: 2, color: 'white', display: 'block' }} >
+               السلة
+              </Button></Link>
+             
+            
+          </Box>
+
          { userInfo ? (<Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>

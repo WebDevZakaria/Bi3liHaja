@@ -15,6 +15,7 @@ import ProfileScreen from './screens/ProfileScreen';
 import OrderSummary from './screens/OrderSummary';
 import AddProductScreen from './screens/AddProductScreen';
 import FilterCategoryScreen from './screens/FilterCategoryScreen';
+
 function App() {
 
   return (
@@ -27,10 +28,14 @@ function App() {
 
       <Routes>
 
+      <Route path='/card/' element={<AddToCard/>}>
+
+      <Route path=':id' element={<AddToCard/>}/>
+
+      </Route>
 
         <Route path='/' element = {<HomeScreen/>} />
         <Route path='/products/:id' element = {<ProductScreen/>} />
-        <Route path='/addtocard/' element = {<AddToCard/>} />
         <Route path='/login/' element = {<LoginScreen/>} />
         <Route path='/Register/' element = {<RegisterScreen/>} />
         <Route path='/shipping/' element = {<ShippingScreen/>} />
