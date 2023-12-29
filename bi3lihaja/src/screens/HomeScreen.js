@@ -5,6 +5,7 @@ import Team from '../component/Team'
 import HeroScreen from '../component/HeroScreen'
 import ShowCaractiristic from '../component/ShowCaractiristic'
 import Market from '../component/Market'
+import BrandImage from '../component/BrandImage'
 
 
 function HomeScreen() {
@@ -15,8 +16,11 @@ function HomeScreen() {
       <HeroScreen />
       <Market />
       <ImgMediaCard /> 
-      <Team />
+
+      <BrandImage />
       
+      <Team />  
+
       <ShowCaractiristic />
       <Testimonial />   
       

@@ -86,8 +86,8 @@ history('/login?redirect=shipping')
             <p class="text-sm text-gray-700"></p>
           </div>
         </div>
-        <Link to='/shipping'> <button class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">تأكيد الطلبية
-        </button></Link>
+         <button  onClick = {checkoutHandler} class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">تأكيد الطلبية
+        </button>
       </div>
     </div>
   </div>

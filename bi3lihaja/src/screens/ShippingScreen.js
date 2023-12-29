@@ -1,18 +1,47 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import LIVRER from '../images/livrer.png'
-import { Link } from 'react-router-dom'
+
+
+import {useSelector,useDispatch} from 'react-redux'
+import { Link ,useNavigate} from 'react-router-dom'
+
+
 
 function ShippingScreen() {
+
+    const dispatch = useDispatch()
+
+    let history = useNavigate();
+
+    //const orderCreate = useSelector(state=>state.orderCreate)
+
+    //const {order, error, success} = orderCreate
+ 
+    const cart = useSelector(state=>state.cart)
+
+    const { cartItems } = cart
+    
+    cart.itemsPrice = cart.cartItems.reduce((acc,item) => acc + item.price ,0)
+
+    //cart.shippingPrice =     (cart.itemsPrice > 2000 ? 0 :10).toFixed(2)
+
+    //cart.taxPrice = ((0.082) * cart.itemsPrice).toFixed(2)
+
+    cart.totalPrice = (Number(cart.itemsPrice))
+
+   
+
     
   return (
 
     <div class="min-w-screen min-h-screen bg-gray-50 py-5">
     <div class="px-5">
-    <button
+    <Link to = '/card'><button
   type="button"
   class="inline-block rounded-full bg-red-600 px-8 pb-4 pt-4 text-[16px] font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#dc4c64] transition duration-150 ease-in-out hover:bg-danger-600 hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:bg-danger-600 focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] focus:outline-none focus:ring-0 active:bg-danger-700 active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.3),0_4px_18px_0_rgba(220,76,100,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(220,76,100,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(220,76,100,0.2),0_4px_18px_0_rgba(220,76,100,0.1)]">
   رجوع
 </button>
+</Link>
 
         
     <div className="relative mx-auto pb-4 mt-0 w-full  max-w-[1200px]  text-white">
@@ -29,18 +58,22 @@ function ShippingScreen() {
             <div class="-mx-3 md:flex items-start">
                 <div class="px-3 md:w-7/12 lg:pr-10">
                     <div class="w-full mx-auto text-gray-800 font-light mb-6 border-b border-gray-200 pb-6">
-                        <div class="w-full flex items-center">
+                        {cartItems.map(item =>(
+                            <div class="w-full flex items-center">
                             <div class="overflow-hidden rounded-lg w-16 h-16 bg-gray-50 border border-gray-200">
-                                <img src="https://images.unsplash.com/photo-1572635196237-14b3f281503f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1160&q=80" alt="" />
+                                <img src={item.image} alt="" />
                             </div>
                             <div class="flex-grow pl-3">
-                                <h6 class="font-semibold uppercase text-gray-600">Ray Ban Sunglasses.</h6>
+                                <h6 class="font-semibold uppercase text-gray-600">{item.name}</h6>
                                 <p class="text-gray-400">x 1</p>
                             </div>
                             <div>
-                                <span class="font-semibold text-gray-600 text-xl">DA 210</span><span class="font-semibold text-gray-600 text-sm">.00</span>
+                                <span class="font-semibold text-gray-600 text-xl">DA {item.price}</span><span class="font-semibold text-gray-600 text-sm"></span>
                             </div>
                         </div>
+
+                          ))}
+                        
                     </div>
                    
                     <div class="mb-6 pb-6 border-b border-gray-200 text-gray-800">
@@ -49,7 +82,7 @@ function ShippingScreen() {
                                 <span class="text-gray-600">السعر</span>
                             </div>
                             <div class="pl-3">
-                                <span class="font-semibold">دج190.91</span>
+                                <span class="font-semibold">دج  {cart.totalPrice} </span>
                             </div>
                         </div>
                         <div class="w-full flex items-center">
