@@ -1,5 +1,5 @@
 ```diff
--Big Notes: THe Project iss Still In Progess :40%
+-Big Notes: THe Project iss Still In Progess :55%
 ```
 <hr/>
 <h1> Bi3li Haja Marketplace with Django and React </h1>
