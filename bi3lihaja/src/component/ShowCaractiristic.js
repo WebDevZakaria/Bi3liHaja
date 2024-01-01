@@ -55,13 +55,13 @@ function ShowCaractiristic() {
 
         {/* :::Feature 4 -> Partnership */}
         <div className="col-span-full sm:col-span-2 md:col-span-1 lg:col-span-2 mx-auto py-5 px-2.5 w-full max-w-xs flex flex-col justify-center items-center space-y-2 rounded-sm border-2 border-blue-300 md:border-gray-100 bg-black bg-opacity-80 text-center">
+
           {/* Icon */}
           <img src = {SHOP5} />
-          
+
         </div>
 
       </dl>
-
 
     </div>
   </div>

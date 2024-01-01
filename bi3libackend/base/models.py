@@ -88,7 +88,6 @@ class Order(models.Model):
 
         return str(self.createdAt)
 
-
 class OrderItem(models.Model):
 
     product = models.ForeignKey(Product, on_delete=models.SET_NULL, null=True)

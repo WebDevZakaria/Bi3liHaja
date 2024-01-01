@@ -1,9 +1,10 @@
 from rest_framework import serializers
-from base.models import Product
+from base.models import Product, ShippingAddress, Order, OrderItem
 from dataclasses import field
 from pyexpat import model
 from Accounts.models import Account
 from rest_framework_simplejwt.tokens import RefreshToken
+
 
 class UserSerializers(serializers.ModelSerializer):
 
@@ -48,3 +49,54 @@ class ProductSerializers(serializers.ModelSerializer):
     class Meta:
         model = Product
         fields = '__all__'
+
+
+
+
+
+class ShippinAdressSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = ShippingAddress
+        fields = '__all__'
+
+
+class OrderItemSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = OrderItem
+        fields = '__all__'
+
+
+class OrderSerializers(serializers.ModelSerializer):
+
+    orderItems = serializers.SerializerMethodField(read_only=True)
+
+    shippingAddress = serializers.SerializerMethodField(read_only=True)
+
+    user = serializers.SerializerMethodField(read_only=True)
+
+    class Meta:
+        model = Order
+        fields = '__all__'
+
+    def get_orderItems(self, obj):
+        items = obj.orderitem_set.all()
+        serializer = OrderItemSerializers(items, many=True)
+        return serializer.data
+
+    def get_shippingAddress(self, obj):
+
+        try:
+            shippingAddress = ShippinAdressSerializers(
+                obj.shippingaddress, many=False).data
+
+        except:
+            shippingAddress = False
+        return shippingAddress
+
+    def get_user(self, obj):
+
+        user = obj.user
+
+        serializer = UserSerializers(user, many=False)
+
+        return serializer.data
