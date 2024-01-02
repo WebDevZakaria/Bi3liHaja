@@ -15,6 +15,7 @@ from datetime import datetime
 
 @api_view(['POST'])
 @permission_classes([IsAuthenticated])
+
 def addOrderItems(request):
 
     user = request.user
@@ -31,22 +32,20 @@ def addOrderItems(request):
         order = Order.objects.create(
 
             user=user,
-            payementMethod=data['payementMethod'],
-            textPrice=data['taxPrice'],
-            shippingPrice=data['shippingPrice'],
+            shippingPrice=500,
             totalPrice=data['totalPrice']
 
         )
         
         # createShippingAdress
+        
         shipping = ShippingAddress.objects.create(
 
             order=order,
-            address=data['shippingAdress']['adress'],
-            city=data['shippingAdress']['city'],
-            postalCode=data['shippingAdress']['postal'],
-            country=data['shippingAdress']['country']
-
+            city=data['city'],
+            phone_number=data['phone'],
+            wilaya=data['wilaya'],
+            shippingPrice = 500
 
         )
 
@@ -60,7 +59,6 @@ def addOrderItems(request):
                 product=product,
                 order=order,
                 name=product.name,
-                qty=i['qty'],
                 price=i['price'],
                 image=product.image.url,
 

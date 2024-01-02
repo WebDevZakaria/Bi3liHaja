@@ -1,11 +1,9 @@
-import React, { useEffect } from 'react'
+import React,{useState, useEffect } from 'react'
 import LIVRER from '../images/livrer.png'
-
-
 import {useSelector,useDispatch} from 'react-redux'
 import { Link ,useNavigate} from 'react-router-dom'
-
-
+import { createOrder } from '../actions/orderActions'
+import { ORDER_CREATE_RESET } from '../constants/OrderConstants'
 
 function ShippingScreen() {
 
@@ -13,14 +11,18 @@ function ShippingScreen() {
 
     let history = useNavigate();
 
-    //const orderCreate = useSelector(state=>state.orderCreate)
 
-    //const {order, error, success} = orderCreate
- 
+    const  [wilaya,setWilaya] = useState('')
+    const  [phone,setPhone] = useState('')
+    const  [city,setCity] = useState('')
+
+    const orderCreate = useSelector(state=>state.orderCreate)
+    const {order, error, success} = orderCreate
+
     const cart = useSelector(state=>state.cart)
-
     const { cartItems } = cart
-    
+
+
     cart.itemsPrice = cart.cartItems.reduce((acc,item) => acc + item.price ,0)
 
     //cart.shippingPrice =     (cart.itemsPrice > 2000 ? 0 :10).toFixed(2)
@@ -29,9 +31,44 @@ function ShippingScreen() {
 
     cart.totalPrice = (Number(cart.itemsPrice))
 
-   
 
+    useEffect(()=>{
+
+        if (success){
+
+            history(`/order/${order._id}`)
+            dispatch({type:ORDER_CREATE_RESET})
     
+        }
+
+    },[success,history])
+
+
+    const placeOrderHandler=()=>{
+
+        dispatch(createOrder({
+
+            orderItems:cartItems,
+            phone,
+            city,
+            wilaya,
+            itemsPrice:cart.itemsPrice,
+            totalPrice:cart.totalPrice
+        }))
+
+        
+        console.log(createOrder)
+
+    }
+
+
+
+
+
+
+
+
+
   return (
 
     <div class="min-w-screen min-h-screen bg-gray-50 py-5">
@@ -126,24 +163,16 @@ function ShippingScreen() {
                     <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 text-gray-800 font-light mb-6">
                         <div class="w-full p-3 border-b border-gray-200">
                           
-                            <div>
-                                <div class="mb-3">
-                                    <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">الاسم</label>
-                                    <div>
-                                        <input class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="ادخل اسمك" type="text"/>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">اللقب</label>
-                                    <div>
-                                        <input class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="ادخل لقبك" type="text"/>
-                                    </div>
-                                </div>
-
+                            <form onSubmit={placeOrderHandler}>
+                              
+                                
                                 <div class="mb-3">
                                     <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">رقم الهاتف</label>
                                     <div>
-                                        <input class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="ادخل رقم الهاتف" type="text"/>
+                                        <input class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="ادخل رقم الهاتف" type="text"
+                                        
+                                        value = {phone ? phone :  ''} onChange={(e)=>setPhone(e.target.value)}
+                                        />
                                     </div>
                                 </div>
 
@@ -153,7 +182,10 @@ function ShippingScreen() {
                                 <div class="mb-3">
                                     <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">الولاية</label>
                                     <div>
-                                        <input class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="ادخل ولايتك" type="text"/>
+                                        <input class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="ادخل ولايتك" type="text"
+                                        value = {wilaya ? wilaya :  ''} onChange={(e)=>setWilaya(e.target.value)}
+                                        />
+
                                     </div>
                                 </div>
 
@@ -162,11 +194,16 @@ function ShippingScreen() {
                                 <div class="mb-3">
                                     <label class="text-gray-600 font-semibold text-sm mb-2 ml-1">العنوان  الشخصي</label>
                                     <div>
-                                        <input class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="ادخل عنوانك الشخصي" type="text"/>
+
+                                        <input class="w-full px-3 py-2 mb-1 border border-gray-200 rounded-md focus:outline-none focus:border-indigo-500 transition-colors" placeholder="ادخل عنوانك الشخصي" type="text"
+                                        value = {city ? city :  ''} onChange={(e)=>setCity(e.target.value)}
+                                        />
+                                        
                                     </div>
+
                                 </div>
                               
-                            </div>
+                            </form>
                         </div>
                        
                     </div>
