@@ -29,8 +29,8 @@ function ShippingScreen() {
 
     //cart.taxPrice = ((0.082) * cart.itemsPrice).toFixed(2)
 
-    cart.totalPrice = (Number(cart.itemsPrice))
 
+    cart.totalPrice = (Number(cart.itemsPrice))
 
     useEffect(()=>{
 
