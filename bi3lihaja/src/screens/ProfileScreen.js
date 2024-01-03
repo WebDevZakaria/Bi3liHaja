@@ -32,10 +32,7 @@ function ProfileScreen() {
 
                 dispatch(getUserDetails('profile'))
                 
-            } 
-             
-
-            
+            }
 
         }
         
