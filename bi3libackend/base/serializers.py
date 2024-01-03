@@ -51,9 +51,6 @@ class ProductSerializers(serializers.ModelSerializer):
         fields = '__all__'
 
 
-
-
-
 class ShippinAdressSerializers(serializers.ModelSerializer):
     class Meta:
         model = ShippingAddress
@@ -69,9 +66,6 @@ class OrderItemSerializers(serializers.ModelSerializer):
 class OrderSerializers(serializers.ModelSerializer):
 
     orderItems = serializers.SerializerMethodField(read_only=True)
-
-    shippingAddress = serializers.SerializerMethodField(read_only=True)
-
     user = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
@@ -83,15 +77,7 @@ class OrderSerializers(serializers.ModelSerializer):
         serializer = OrderItemSerializers(items, many=True)
         return serializer.data
 
-    def get_shippingAddress(self, obj):
-
-        try:
-            shippingAddress = ShippinAdressSerializers(
-                obj.shippingaddress, many=False).data
-
-        except:
-            shippingAddress = False
-        return shippingAddress
+    
 
     def get_user(self, obj):
 

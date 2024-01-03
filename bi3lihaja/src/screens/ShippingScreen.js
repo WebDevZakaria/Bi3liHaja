@@ -4,6 +4,7 @@ import {useSelector,useDispatch} from 'react-redux'
 import { Link ,useNavigate} from 'react-router-dom'
 import { createOrder } from '../actions/orderActions'
 import { ORDER_CREATE_RESET } from '../constants/OrderConstants'
+import { saveShippingAdress } from '../actions/cartActions'
 
 function ShippingScreen() {
 
@@ -16,11 +17,10 @@ function ShippingScreen() {
     const  [phone,setPhone] = useState('')
     const  [city,setCity] = useState('')
 
-    const orderCreate = useSelector(state=>state.orderCreate)
-    const {order, error, success} = orderCreate
 
-    const cart = useSelector(state=>state.cart)
-    const { cartItems } = cart
+    const cart =  useSelector(state=>state.cart)
+
+    const { shippingAdress,cartItems } = cart
 
 
     cart.itemsPrice = cart.cartItems.reduce((acc,item) => acc + item.price ,0)
@@ -32,41 +32,29 @@ function ShippingScreen() {
 
     cart.totalPrice = (Number(cart.itemsPrice))
 
+   
+
     useEffect(()=>{
 
-        if (success){
-
-            history(`/order/${order._id}`)
-            dispatch({type:ORDER_CREATE_RESET})
-    
+        if (shippingAdress) {
+      
+          setWilaya(shippingAdress.wilaya)
+          setPhone(shippingAdress.phone)
+          setCity(shippingAdress.city)
+          
         }
+         
+      },[shippingAdress])
 
-    },[success,history])
-
-
-    const placeOrderHandler=()=>{
-
-        dispatch(createOrder({
-
-            orderItems:cartItems,
-            phone,
-            city,
-            wilaya,
-            itemsPrice:cart.itemsPrice,
-            totalPrice:cart.totalPrice
-        }))
-
-        
-        console.log(createOrder)
-
-    }
-
-
-
-
-
-
-
+          const submitHandler=(e)=>{
+      
+            e.preventDefault()
+            
+            dispatch(saveShippingAdress({wilaya,phone,city}))
+      
+            history('/success')
+      
+          }
 
 
   return (
@@ -163,7 +151,7 @@ function ShippingScreen() {
                     <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 text-gray-800 font-light mb-6">
                         <div class="w-full p-3 border-b border-gray-200">
                           
-                            <form onSubmit={placeOrderHandler}>
+                            <form onSubmit={submitHandler}>
                               
                                 
                                 <div class="mb-3">
@@ -202,14 +190,14 @@ function ShippingScreen() {
                                     </div>
 
                                 </div>
-                              
+                                <div>
+                        <button class="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-2 font-semibold"><i class="mdi mdi-lock-outline mr-1"></i>تأكيد</button>
+                    </div>
                             </form>
                         </div>
                        
                     </div>
-                    <div>
-                        <Link to = '/success'><button class="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-2 font-semibold"><i class="mdi mdi-lock-outline mr-1"></i>تأكيد</button></Link>
-                    </div>
+                   
                 </div>
             </div>
         </div>

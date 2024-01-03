@@ -19,8 +19,10 @@ import { ORDER_DELIVER_FAIL } from "../constants/OrderConstants";
 import { ORDER_DELIVER_RESET } from "../constants/OrderConstants";
 import { ORDER_DELIVER_SUCCESS } from "../constants/OrderConstants";
 
-export const  orderCreateReducer=(state = {},action)=>{
 
+
+export const  orderCreateReducer=(state = {},action)=>{
+    
     switch(action.type)
     {
 
