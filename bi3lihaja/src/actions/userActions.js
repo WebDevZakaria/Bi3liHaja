@@ -10,6 +10,8 @@ import { USER_DETAILS_REQUEST } from "../constants/userConstants";
 import { USER_DETAILS_SUCCESS } from "../constants/userConstants";
 import { USER_DETAILS_FAIL } from "../constants/userConstants";
 
+import { PRODUCT_LIST_MY_REQUEST,PRODUCT_LIST_MY_FAIL,PRODUCT_LIST_MY_RESET,PRODUCT_LIST_MY_SUCCESS } from "../constants/userConstants";
+
 
 import axios from "axios";
 
@@ -129,6 +131,59 @@ export const login = (email,password) => async(dispatch)=>
             })
         }
         }
+
+
+
+        export const ListMyProduct = () => async(dispatch,getState)=> 
+
+        {
+        
+            try{
+        
+                dispatch({type:PRODUCT_LIST_MY_REQUEST})
+                
+                const 
+                { 
+                    userLogin :{ userInfo },
+
+               } = getState()
+        
+                const config = {
+        
+                    headers: {
+
+                        'Content-Type': 'application/json',
+        
+                        'Authorization': 'Bearer ' + userInfo.token
+        
+                    },
+        
+                    data : {},
+        
+                };
+                
+                axios.get(`/api/users/allproduct/`,config).then(response=>{
+                    
+                    dispatch({type:PRODUCT_LIST_MY_SUCCESS,payload:response.data})
+        
+                })
+                
+            }
+
+
+            catch(error){    
+        
+                dispatch({
+                    
+                    type:PRODUCT_LIST_MY_FAIL,payload:error.response && error.response.data.detail 
+                    ? error.response.data.detail
+                    : error.message,
+        
+                })
+        
+            }
+        
+            }
 
 
 

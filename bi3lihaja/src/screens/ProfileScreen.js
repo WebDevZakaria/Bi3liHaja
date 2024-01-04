@@ -1,10 +1,12 @@
 import React,{useEffect,useState} from 'react'
-import ZAKARIA from '../images/zedk.jpg'
 
+import ZAKARIA from '../images/zedk.jpg'
 import {useNavigate} from 'react-router-dom'
 import { useDispatch,useSelector } from 'react-redux'
 import { getUserDetails } from '../actions/userActions'
 import { ListMyOrder } from '../actions/orderActions'
+import { ListMyProduct } from '../actions/userActions'
+
 
 function ProfileScreen() {
 
@@ -19,6 +21,9 @@ function ProfileScreen() {
 
     const orderListMy = useSelector(state=>state.orderListMy)
     const { orders } = orderListMy
+
+    const ProductListMy = useSelector(state=>state.ProductListMy)
+    const { product } = ProductListMy
 
 
     useEffect(()=>{
@@ -35,6 +40,7 @@ function ProfileScreen() {
 
                 dispatch(getUserDetails('profile'))
                 dispatch(ListMyOrder())
+                dispatch(ListMyProduct())
                 
             }
 
@@ -151,7 +157,7 @@ function ProfileScreen() {
                         </thead>
                         <tbody>
 
-                            {orders.map(orderss =>(
+                            {orders.map(orderss => (
 
  <tr>
  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -179,7 +185,7 @@ function ProfileScreen() {
              {orderss.totalPrice}
          </p>
      </td>
-     
+
      <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
          <span
              class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
@@ -437,62 +443,39 @@ function ProfileScreen() {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <div class="flex items-center">
-                                        <div class="flex-shrink-0 w-10 h-10">
-                                            <img class="w-full h-full rounded-full"
-                                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                                                alt="" />
+                            {product.map(products =>(
+                                <tr>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 w-10 h-10">
+                                                <img class="w-full h-full rounded-full"
+                                                    src={products.image}
+                                                    alt="" />
+                                            </div>
+                                            <div class="ml-3">
+                                                <p class="text-gray-900 whitespace-no-wrap">
+                                                    {products.name}
+                                                </p>
+                                            </div>
                                         </div>
-                                        <div class="ml-3">
-                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                Vera Carpenter
-                                            </p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">Admin</p>
-                                </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">Admin</p>
-                                </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">
-                                        Jan 21, 2020
-                                    </p>
-                                </td>
-                               
-                            </tr>
-                            <tr>
-                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <div class="flex items-center">
-                                        <div class="flex-shrink-0 w-10 h-10">
-                                            <img class="w-full h-full rounded-full"
-                                                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.2&w=160&h=160&q=80"
-                                                alt="" />
-                                        </div>
-                                        <div class="ml-3">
-                                            <p class="text-gray-900 whitespace-no-wrap">
-                                                Vera Carpenter
-                                            </p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">Admin</p>
-                                </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">Admin</p>
-                                </td>
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <p class="text-gray-900 whitespace-no-wrap">
-                                        Jan 21, 2020
-                                    </p>
-                                </td>
-                             
-                            </tr>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <p class="text-gray-900 whitespace-no-wrap"></p>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <p class="text-gray-900 whitespace-no-wrap">{products.price} DA</p>
+                                    </td>
+                                    <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <p class="text-gray-900 whitespace-no-wrap">
+                                            Jan 21, 2020
+                                        </p>
+                                    </td>
+                                   
+                                </tr>
+
+                            ))}
+                            
+                            
                           
                             
                         </tbody>

@@ -2,29 +2,21 @@ import email
 from urllib import response
 from django.shortcuts import render
 # Create your views here.
+
 from django.http import JsonResponse
-
-
 from django.contrib.auth.models import User
-
 from Accounts.models import Account
-
 from rest_framework.decorators import api_view
-
 from rest_framework.response import Response
-
-
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
-
-from base.serializers import UserSerializers, UserSerializerWithToken
+from base.serializers import UserSerializers, UserSerializerWithToken,ProductSerializers
 from rest_framework.decorators import permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
-
-
 from django.contrib.auth.hashers import make_password
-
 from rest_framework import status
+from base.models import Product
+
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
@@ -76,6 +68,8 @@ def registerUser(request):
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
+
+
 def getUserProfil(request):
 
     user = request.user
@@ -83,5 +77,18 @@ def getUserProfil(request):
     return Response(serializers.data)
 
 
+@api_view(['GET'])
+@permission_classes([IsAuthenticated])
+
+
+def getMyProducts(request):
+
+    user=request.user
+
+    product = Product.objects.filter(user = user)
+
+    serializers = ProductSerializers(product,many=True)
+    
+    return Response(serializers.data)
 
 

@@ -11,6 +11,8 @@ urlpatterns = [
     
     path('profile/', views.getUserProfil, name='user-profile'),
 
+    path('allproduct/', views.getMyProducts, name='products'),
+
     
 ]
 

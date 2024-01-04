@@ -39,13 +39,10 @@ Create a virtual environment to install dependencies in and activate it:
 
       $ venv\Scripts\activate
 
-
-
 Then go to the backend folder and install the dependencies:
 
       $ cd bi3libackend
       (venv) $ pip install -r requirements.txt
-
 
 Note the (venv) should be in the front of the prompt. this indicate that the terminal session is in a virtual env
 
@@ -58,7 +55,6 @@ Apply migrations:
 Create a superuser account:
 
       (env) $ python manage.py createsuperuser
-
 
 Follow the prompts to set up your admin account.
 
@@ -77,7 +73,6 @@ Navigate to the frontend directory
 Install frontend dependencies:
 
        npm install
-
 
 Finally ,Start the frontend development server:
 
