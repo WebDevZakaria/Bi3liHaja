@@ -30,12 +30,12 @@ function OrderSummary() {
 
   const {userInfo} = userLogin
 
-  cart.itemsPrice = cartItems.reduce((acc,item)=> acc + item.price * item.qty,0).toFixed(2)
-  
+  cart.itemsPrice = cartItems.reduce((acc,item)=> Number(acc + item.price) , 0).toFixed(2)
+
   cart.shippingPrice =     (cart.itemsPrice > 2000 ? 0 :10).toFixed(2)
 
   cart.taxPrice = ((0.082) * cart.itemsPrice).toFixed(2)
-
+  
   cart.totalPrice = (Number(cart.itemsPrice)+Number(cart.shippingPrice)+Number(cart.taxPrice)).toFixed(2)
 
   useEffect(()=>{
@@ -56,9 +56,10 @@ function OrderSummary() {
 
   }
 
+
       if (success){
 
-          history(`/order/${order._id}`)
+          history('/')
           dispatch({type:ORDER_CREATE_RESET})
           
       }
@@ -71,10 +72,7 @@ function OrderSummary() {
 
           orderItems:cartItems,
           shippingAdress:shippingAdress,
-          payementMethod:payementMethod,
           itemsPrice:cart.itemsPrice,
-          shippingPrice:cart.shippingPrice,
-          taxPrice: cart.taxPrice,
           totalPrice:cart.totalPrice
 
       }))
@@ -91,14 +89,14 @@ function OrderSummary() {
     <h1 class="text-3xl dark:text-white lg:text-5xl font-semibold leading-7 lg:leading-9 text-gray-800">مرحلة تاكيد الطلبية</h1>
     {/* <img alt="..." src={SUCCESS} class="shadow-xl rounded-full h-auto align-middle border-none  m-16 ml-[400px] sm:ml-[240px] lg:ml-[600px] max-w-150-px" />*/}
     
-    <a href=""
+    <button onClick={placeOrderHandler}
         class="flex flex-row items-center justify-center w-full text-2xl h-16 px-12 py-4 mb-8 text-white  font-semibold bg-green-300 leading-6 capitalize duration-100 transform rounded-sm shadow cursor-pointer focus:ring-4 focus:ring-green-500 focus:ring-opacity-50 focus:outline-none sm:mb-0 sm:w-auto sm:mr-4 md:pl-8 md:pr-6 xl:pl-12 xl:pr-10   hover:shadow-lg hover:-translate-y-1">
         اضغط هنا لتاكيد طلبيتك
         <span class="ml-4">
             <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24" class="w-5 h-5 fill-current"><path fill="currentColor" d="M17.92,11.62a1,1,0,0,0-.21-.33l-5-5a1,1,0,0,0-1.42,1.42L14.59,11H7a1,1,0,0,0,0,2h7.59l-3.3,3.29a1,1,0,0,0,0,1.42,1,1,0,0,0,1.42,0l5-5a1,1,0,0,0,.21-.33A1,1,0,0,0,17.92,11.62Z"></path>
             </svg>
         </span>
-    </a>
+    </button>
 
 
   </div>
@@ -155,7 +153,7 @@ function OrderSummary() {
           </div>
           <div class="flex justify-between items-center w-full">
             <p class="text-base dark:text-white font-semibold leading-4 text-gray-800">Total</p>
-            <p class="text-base dark:text-gray-300 font-semibold leading-4 text-gray-600">2800 DA</p>
+            <p class="text-base dark:text-gray-300 font-semibold leading-4 text-gray-600"> {cart.totalPrice}</p>
           </div>
         </div>
         <div class="flex flex-col justify-center px-4 py-6 md:p-6 xl:p-8 w-full bg-gray-50 dark:bg-gray-800 space-y-6">

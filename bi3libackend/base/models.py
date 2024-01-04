@@ -68,7 +68,7 @@ class Order(models.Model):
         max_digits=7, decimal_places=2, null=True, blank=True)
     
     totalPrice = models.DecimalField(
-        max_digits=7, decimal_places=2, null=True, blank=True)
+        max_digits=7, decimal_places=2, null=True, blank=True, default = 0)
     
     isPaid = models.BooleanField(default=False)
 
@@ -117,7 +117,7 @@ class ShippingAddress(models.Model):
     _id = models.AutoField(primary_key=True, editable=False)
 
     def __str__(self):
-        return str(self.address)
+        return str(self.city)
 
 
 

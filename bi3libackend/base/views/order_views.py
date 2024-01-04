@@ -29,6 +29,7 @@ def addOrderItems(request):
 
     else:
         # create Order
+        
         order = Order.objects.create(
 
             user=user,
@@ -42,9 +43,9 @@ def addOrderItems(request):
         shipping = ShippingAddress.objects.create(
 
             order=order,
-            city=data['city'],
-            phone_number=data['phone'],
-            wilaya=data['wilaya'],
+            city=data['shippingAdress']['city'],
+            phone_number=data['shippingAdress']['phone'],
+            wilaya=data['shippingAdress']['wilaya'],
             shippingPrice = 500
 
         )

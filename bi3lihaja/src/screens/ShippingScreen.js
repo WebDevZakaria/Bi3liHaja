@@ -22,17 +22,15 @@ function ShippingScreen() {
 
     const { shippingAdress,cartItems } = cart
 
+    cart.itemsPrice = cartItems.reduce((acc,item)=> Number(acc + item.price) , 0).toFixed(2)
 
-    cart.itemsPrice = cart.cartItems.reduce((acc,item) => acc + item.price ,0)
+    cart.shippingPrice =     (cart.itemsPrice > 2000 ? 0 :10).toFixed(2)
 
-    //cart.shippingPrice =     (cart.itemsPrice > 2000 ? 0 :10).toFixed(2)
+    cart.taxPrice = ((0.082) * cart.itemsPrice).toFixed(2)
+    
+    cart.totalPrice = (Number(cart.itemsPrice)+Number(cart.shippingPrice)+Number(cart.taxPrice)).toFixed(2)
 
-    //cart.taxPrice = ((0.082) * cart.itemsPrice).toFixed(2)
-
-
-    cart.totalPrice = (Number(cart.itemsPrice))
-
-   
+    console.log(cart.itemsPrice)
 
     useEffect(()=>{
 
@@ -107,7 +105,7 @@ function ShippingScreen() {
                                 <span class="text-gray-600">السعر</span>
                             </div>
                             <div class="pl-3">
-                                <span class="font-semibold">دج  {cart.totalPrice} </span>
+                                <span class="font-semibold">دج  {cart.itemsPrice} </span>
                             </div>
                         </div>
                         <div class="w-full flex items-center">
@@ -133,11 +131,15 @@ function ShippingScreen() {
                                 <span class="text-gray-600">السعر الاجمالي</span>
                             </div>
                             <div class="pl-3">
-                                <span class="font-semibold text-gray-400 text-sm">AUD</span> <span class="font-semibold">$210.00</span>
+
+                                 <span class="font-semibold">{cart.totalPrice} DA</span>
+
                             </div>
+                            
                         </div>
                     </div>
                 </div>
+
                 <div class="px-3 md:w-5/12">
                     <div class="w-full mx-auto rounded-lg bg-white border border-gray-200 p-3 text-gray-800 font-light mb-6">
                       
@@ -190,6 +192,8 @@ function ShippingScreen() {
                                     </div>
 
                                 </div>
+
+
                                 <div>
                         <button class="block w-full max-w-xs mx-auto bg-indigo-500 hover:bg-indigo-700 focus:bg-indigo-700 text-white rounded-lg px-3 py-2 font-semibold"><i class="mdi mdi-lock-outline mr-1"></i>تأكيد</button>
                     </div>
