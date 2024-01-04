@@ -81,3 +81,7 @@ def getUserProfil(request):
     user = request.user
     serializers = UserSerializers(user, many=False)
     return Response(serializers.data)
+
+
+
+
