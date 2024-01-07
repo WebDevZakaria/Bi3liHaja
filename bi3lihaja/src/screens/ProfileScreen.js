@@ -157,7 +157,7 @@ function ProfileScreen() {
                         </thead>
                         <tbody>
 
-                            {orders.map(orderss => (
+                            {orders?.map(orderss => (
 
  <tr>
  <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -443,37 +443,36 @@ function ProfileScreen() {
                             </tr>
                         </thead>
                         <tbody>
-                            {product.map(products =>(
-                                <tr>
+                            {product?.map(productss =>(                                <tr key={productss._id}>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <div class="flex items-center">
                                             <div class="flex-shrink-0 w-10 h-10">
                                                 <img class="w-full h-full rounded-full"
-                                                    src={products.image}
+                                                    src={productss.image}
                                                     alt="" />
                                             </div>
                                             <div class="ml-3">
                                                 <p class="text-gray-900 whitespace-no-wrap">
-                                                    {products.name}
+                                                    {productss.name}
                                                 </p>
                                             </div>
                                         </div>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap"></p>
+                                        <p class="text-gray-900 whitespace-no-wrap">{productss.category.name}</p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                        <p class="text-gray-900 whitespace-no-wrap">{products.price} DA</p>
+                                        <p class="text-gray-900 whitespace-no-wrap">{productss.price} DA</p>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                         <p class="text-gray-900 whitespace-no-wrap">
-                                            Jan 21, 2020
+                                            {productss.createdAt}
                                         </p>
                                     </td>
                                    
                                 </tr>
 
-                            ))}
+                                    ))}
                             
                             
                           

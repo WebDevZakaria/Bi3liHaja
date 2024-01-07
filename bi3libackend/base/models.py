@@ -25,6 +25,23 @@ class Wilaya(models.Model):
         return self.name
 
 
+class Category(models.Model):
+
+    name = models.CharField(max_length=200, null=True, blank=True)
+    
+    createdAt = models.DateTimeField(auto_now_add=True)
+
+    _id = models.AutoField(primary_key=True, editable=False)
+    
+    def __str__(self):
+
+        return self.name
+
+
+
+
+
+
 class Product(models.Model):
 
     user = models.ForeignKey(Account, on_delete=models.SET_NULL, null=True)
@@ -35,7 +52,7 @@ class Product(models.Model):
 
     brand = models.CharField(max_length=200, null=True, blank=True)
 
-    category = models.CharField(max_length=200, null=True, blank=True)
+    category = models.ForeignKey(Category,on_delete=models.SET_NULL, null=True)
 
     description = models.TextField(null=True, blank=True)
 
