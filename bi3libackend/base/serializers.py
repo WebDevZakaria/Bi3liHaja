@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from base.models import Product, ShippingAddress, Order, OrderItem
+from base.models import Product, ShippingAddress, Order, OrderItem,Preproduct
 from dataclasses import field
 from pyexpat import model
 from Accounts.models import Account
@@ -98,3 +98,10 @@ class OrderSerializers(serializers.ModelSerializer):
         serializer = UserSerializers(user, many=False)
 
         return serializer.data
+
+
+class PreproductSerializers(serializers.ModelSerializer):
+
+    class Meta:
+        model = Preproduct
+        fields = '__all__'
