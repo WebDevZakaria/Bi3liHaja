@@ -50,8 +50,9 @@ def AddProduct(request):
             yourAdresss = data['yourAdresss'],
             price = data['price'],
             countInStock = 1,
-        )
 
+        )
+        
         serializer = PreproductSerializers(preproduct, many=False)
 
         return Response(serializer.data)
@@ -60,6 +61,3 @@ def AddProduct(request):
 
         message = {'detail': 'Something Went Wrong'}
         return Response(message, status=status.HTTP_400_BAD_REQUEST)
-
-
-

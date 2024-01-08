@@ -4,6 +4,7 @@ import { PROUDUCT_LIST_FAIL } from "../constants/productConstants"
 import { PROUDUCT_DETAILS_FAIL } from "../constants/productConstants"
 import { PROUDUCT_DETAILS_REQUEST } from "../constants/productConstants"
 import { PROUDUCT_DETAILS_SUCCESS } from "../constants/productConstants"
+import { PRODUCT_ADD_SUCCESS,PRODUCT_ADD_REQUEST,PRODUCT_ADD_FAIL } from "../constants/productConstants"
 
 
 import axios from "axios"
@@ -58,3 +59,58 @@ export const listProductDetails =(id) => async(dispatch) => {
         })
     }
     }
+ 
+
+        export const addproduct = (name,image,brand,category,description,wilaya,yourAdresss,price) => async(dispatch,getState)=> 
+
+        {
+        
+            try{
+        
+                dispatch({type:PRODUCT_ADD_REQUEST})
+                
+                const
+        
+                { 
+        
+                    userLogin :{ userInfo },
+        
+               } = getState()
+               
+        
+                const config = {
+        
+                    headers: { 
+                        'Content-Type': 'application/json',
+        
+                        'Authorization': 'Bearer ' + userInfo.token
+        
+                    },
+        
+                    data : {},
+        
+                };
+                
+                axios.post('/api/products/addproduct/'
+
+               ,{'name':name,'image':image,'brand':brand,'category':category,'description':description,'wilaya':wilaya,'yourAdresss':yourAdresss,'price':price},config).then(response=>{
+        
+                    dispatch({type:PRODUCT_ADD_SUCCESS,payload:response.data})
+        
+                })
+                        
+            }
+            
+            catch(error){    
+        
+                dispatch({
+                    
+                    type:PRODUCT_ADD_FAIL,payload:error.response && error.response.data.detail 
+                    ? error.response.data.detail
+                    : error.message,
+        
+                })
+        
+            }
+        
+            }

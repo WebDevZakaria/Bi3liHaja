@@ -13,6 +13,7 @@ import { orderCreateReducer } from './reducer/orderReducer'
 import { orderListMyReducer } from './reducer/orderReducer'
 
 import { productListMyReducer } from './reducer/userReducers'
+import { productAddReducer } from './reducer/productReducres'
 
 
 const reducer = combineReducers({
@@ -25,7 +26,8 @@ const reducer = combineReducers({
     cart:cartReducers,
     orderCreate:orderCreateReducer,
     orderListMy:orderListMyReducer,
-    ProductListMy:productListMyReducer
+    ProductListMy:productListMyReducer,
+    productAdd:productAddReducer
 
 })
 

@@ -1,8 +1,70 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import GUIDE from '../images/guide.png'
 import STARTSELL from '../images/startsell.png'
+import { useDispatch,useSelector } from 'react-redux'
+import { useLocation ,useNavigate} from 'react-router-dom'
+import { addproduct } from '../actions/productActions'
+
 
 function AddProductScreen() {
+
+  const location =  useLocation()
+  let history = useNavigate();
+
+  const  [name,setName] = useState('')
+  const  [image,setImage] = useState('')
+  const  [brand,setBrand] = useState('')
+  const [category, setCategory] = useState('');
+  const [description, setDescription] = useState('');
+  const [yourAdresss, setYourAdresss] = useState('');
+  const [wilaya, setWilaya] = useState('');
+  const  [price,setPrice] = useState('')
+
+
+  const dispatch = useDispatch()
+
+  const userLogin = useSelector(state=>state.userLogin)
+  const {userInfo} = userLogin
+
+  const orderCreate = useSelector(state=>state.productAdd)
+  const { success } = orderCreate
+
+
+  useEffect(()=>{
+
+    if (!userInfo) {
+
+      history('/login')
+
+  }else {
+    if (success){
+
+      history('/')
+      
+  }
+
+  setWilaya(userInfo.wilaya)
+
+  }
+
+  },[history,userInfo,dispatch,success])
+
+
+
+
+  const submitHandler=(e)=>{
+
+      
+
+          dispatch(addproduct(name,image,brand,category,description,yourAdresss,wilaya,price))
+
+
+
+  }
+
+  console.log(wilaya)
+
+
   return (
     <section className="bg-[url('https://images.pexels.com/photos/7195232/pexels-photo-7195232.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-cover bg-no-repeat">
     <div className=' flex flex-col  lg:flex-row mt-0'>
@@ -12,29 +74,54 @@ function AddProductScreen() {
     <form>
         <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
             <div>
-                <label class="text-white dark:text-gray-200" for="username">Username</label>
-                <input id="username" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
+                <label class="text-white dark:text-gray-200" for="name">اسم المنتج</label>
+                <input id="name" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                value={name}    onChange ={(e)=>setName(e.target.value)}
+                 />
             </div>
 
             <div>
-                <label class="text-white dark:text-gray-200" for="emailAddress">Email Address</label>
-                <input id="emailAddress" type="email" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
+                <label class="text-white dark:text-gray-200" for="category">  الصنف </label>
+                <input id="category" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" 
+                value={category}    onChange ={(e)=>setCategory(e.target.value)}
+                />
             </div>
 
             <div>
-                <label class="text-white dark:text-gray-200" for="password">Password</label>
-                <input id="password" type="password" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
+                <label class="text-white dark:text-gray-200" for="brand"> البراند </label>
+                <input id="brand" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                value={brand}    onChange ={(e)=>setBrand(e.target.value)}
+                 />
             </div>
 
             <div>
-                <label class="text-white dark:text-gray-200" for="passwordConfirmation">Password Confirmation</label>
-                <input id="passwordConfirmation" type="password" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
+                <label class="text-white dark:text-gray-200" for="description">شرح المنتج</label>
+                <textarea id="description" type="textarea" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                value={description}    onChange ={(e)=>setDescription(e.target.value)}
+                ></textarea>
             </div>
+
             <div>
-                <label class="text-white dark:text-gray-200" for="passwordConfirmation">Color</label>
-                <input id="color" type="color" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" /> 
+                <label class="text-white dark:text-gray-200" for="description">الولاية </label>
+                <div className='text-red-500 font-bold'><br/>{wilaya} <br/>ولايتك تسجل اوتوماتيكيا  على حسب معلومات تسجيل الدخول</div>
+                </div>
+            
+                <div>
+                <label class="text-white dark:text-gray-200" for="yourAdresss">العنوان الشخصي </label>
+                <input id="yourAdresss" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                value={yourAdresss}    onChange ={(e)=>setYourAdresss(e.target.value)}
+                 />
             </div>
+
             <div>
+                <label class="text-white dark:text-gray-200" for="price"> السعر </label>
+                <input id="price" type="number" step="0.01" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"
+                value={price}    onChange ={(e)=>setPrice(e.target.value)}
+                 />
+            </div>
+
+
+           {/*  <div>
                 <label class="text-white dark:text-gray-200" for="passwordConfirmation">Select</label>
                 <select class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
                     <option>Surabaya</option>
@@ -43,18 +130,9 @@ function AddProductScreen() {
                     <option>Bandung</option>
                 </select>
             </div>
-            <div>
-                <label class="text-white dark:text-gray-200" for="passwordConfirmation">Range</label>
-                <input id="range" type="range" class="block w-full py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
-            </div>
-            <div>
-                <label class="text-white dark:text-gray-200" for="passwordConfirmation">Date</label>
-                <input id="date" type="date" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring" />
-            </div>
-            <div>
-                <label class="text-white dark:text-gray-200" for="passwordConfirmation">Text Area</label>
-                <textarea id="textarea" type="textarea" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"></textarea>
-            </div>
+
+            */}
+       
             <div>
                 <label class="block text-sm font-medium text-white">
                 Image
@@ -67,7 +145,9 @@ function AddProductScreen() {
                   <div class="flex text-sm text-gray-600">
                     <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-indigo-600 hover:text-indigo-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-indigo-500">
                       <span class="">Upload a file</span>
-                      <input id="file-upload" name="file-upload" type="file" class="sr-only" />
+                      <input id="file-upload" name="file-upload" type="file" class="sr-only" 
+                      value={image}    onChange ={(e)=>setImage(e.target.value)}
+                      />
                     </label>
                     <p class="pl-1 text-white">or drag and drop</p>
                   </div>
