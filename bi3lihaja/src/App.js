@@ -16,6 +16,13 @@ import OrderSummary from './screens/OrderSummary';
 import AddProductScreen from './screens/AddProductScreen';
 import FilterCategoryScreen from './screens/FilterCategoryScreen';
 
+
+
+import  Home from './admin/pages/dashboard/home'
+
+import  Tables from './admin/pages/dashboard/tables'
+
+
 function App() {
 
   return (
@@ -43,6 +50,15 @@ function App() {
         <Route path='/success/' element = {<OrderSummary/>} />
         <Route path='/addProduct/' element = {<AddProductScreen/>} />
         <Route path='/filters/' element = {<FilterCategoryScreen/>} />
+
+
+
+        
+      <Route path="/dashboard/home" element={<Home />} />
+      <Route path="/dashboard/tables" element={<Tables />} />
+
+
+    
 
       </Routes>
 
