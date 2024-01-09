@@ -1,23 +1,18 @@
+import React from 'react'
 import {
-  Card,
-  CardHeader,
-  CardBody,
-  Typography,
-  Avatar,
-  Chip,
-  Tooltip,
-  Progress,
-} from "@material-tailwind/react";
-import { projectsTableData } from "../../data/projects-table-data";
-import { authorsTableData } from "../../data/authors-table-data";
-import NavBar from "./NavBar";
-
- function Tables() {
-
-
-
-  // here you find all the product in the database
-  
+    Card,
+    CardHeader,
+    CardBody,
+    Typography,
+    Avatar,
+    Chip,
+    Tooltip,
+    Progress,
+  } from "@material-tailwind/react";
+  import { projectsTableData } from "../../data/projects-table-data";
+  import { authorsTableData } from "../../data/authors-table-data";
+  import NavBar from "./NavBar";
+function ProductDemande() {
   return (
     <div>
     <NavBar />
@@ -25,10 +20,13 @@ import NavBar from "./NavBar";
     <div className="mt-12 mb-8 flex flex-col gap-12">
       <Card>
         <CardHeader variant="gradient" color="gray" className="mb-8 p-6">
+
           <Typography variant="h6" color="white" className='text-center'>
-            كل المنتجات
-          </Typography>
+          طلبات لمنتج جديد     
+               </Typography>
+
         </CardHeader>
+        
         <CardBody className="overflow-x-scroll px-0 pt-0 pb-2">
           <table className="w-full min-w-[640px] table-auto">
             <thead>
@@ -101,9 +99,19 @@ import NavBar from "./NavBar";
                         <Typography
                           as="a"
                           href="#"
-                          className="text-xs font-semibold text-blue-gray-600"
+                          className="text-xs font-semibold text-green-600"
                         >
-                          Edit
+                          قبول
+                        </Typography>
+                      </td>
+                      
+                      <td className={className}>
+                        <Typography
+                          as="a"
+                          href="#"
+                          className="text-xs  font-semibold text-red-600"
+                        >
+                          حذف
                         </Typography>
                       </td>
                     </tr>
@@ -118,7 +126,7 @@ import NavBar from "./NavBar";
     </div>
 
     </div>
-  );
+  )
 }
 
-export default Tables;
+export default ProductDemande

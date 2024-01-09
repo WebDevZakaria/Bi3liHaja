@@ -198,6 +198,11 @@ function ResponsiveAppBar() {
                   <Typography textAlign="center">اضف منتج</Typography>
                 </MenuItem>
                 </Link>
+
+                <Link to ='/dashboard/home'> <MenuItem >
+                  <Typography textAlign="center"> الادمين</Typography>
+                </MenuItem>
+                </Link>
             
                 <MenuItem >
                   <Button onClick={logoutHandler}><Typography textAlign="center">Logout</Typography></Button>

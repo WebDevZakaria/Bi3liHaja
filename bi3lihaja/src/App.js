@@ -21,7 +21,8 @@ import FilterCategoryScreen from './screens/FilterCategoryScreen';
 import  Home from './admin/pages/dashboard/home'
 
 import  Tables from './admin/pages/dashboard/tables'
-
+import AllUsers from './admin/pages/dashboard/AllUsers';
+import ProductDemande from './admin/pages/dashboard/ProductDemande';
 
 function App() {
 
@@ -55,7 +56,11 @@ function App() {
 
         
       <Route path="/dashboard/home" element={<Home />} />
-      <Route path="/dashboard/tables" element={<Tables />} />
+      <Route path="/dashboard/products" element={<Tables />} />
+
+      <Route path="/dashboard/allusers" element={<AllUsers />} />
+
+      <Route path="/dashboard/productdemande" element={<ProductDemande />} />
 
 
     
