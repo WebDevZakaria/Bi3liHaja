@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import {
   Card,
   CardHeader,
@@ -12,7 +13,26 @@ import { projectsTableData } from "../../data/projects-table-data";
 import { authorsTableData } from "../../data/authors-table-data";
 import NavBar from "./NavBar";
 
+import { useDispatch,useSelector } from 'react-redux';
+
+import { listProducts } from '../../../actions/productActions';
+
+import { Link } from 'react-router-dom'
+
+
+
  function Tables() {
+  const dispatch = useDispatch()
+  const productList = useSelector(state=>state.productList)  
+  const { products }  = productList
+
+
+
+     useEffect(()=>{
+
+        dispatch(listProducts())
+
+   },[dispatch])
 
 
 
@@ -33,7 +53,7 @@ import NavBar from "./NavBar";
           <table className="w-full min-w-[640px] table-auto">
             <thead>
               <tr>
-                {["author", "function", "status", "employed", ""].map((el) => (
+                {["المنتج", "user", "السعر"].map((el) => (
                   <th
                     key={el}
                     className="border-b border-blue-gray-50 py-3 px-5 text-left"
@@ -49,61 +69,54 @@ import NavBar from "./NavBar";
               </tr>
             </thead>
             <tbody>
-              {authorsTableData.map(
-                ({ img, name, email, job, online, date }, key) => {
+              {products.map(
+                (product) => {
                   const className = `py-3 px-5 ${
-                    key === authorsTableData.length - 1
+                    product._id === products.length - 1
                       ? ""
                       : "border-b border-blue-gray-50"
                   }`;
 
                   return (
-                    <tr key={name}>
+                    <tr key={product._id}>
                       <td className={className}>
                         <div className="flex items-center gap-4">
-                          <Avatar src={img} alt={name} size="sm" variant="rounded" />
+                          <Avatar src={product.image} alt='' size="sm" variant="rounded" />
                           <div>
                             <Typography
                               variant="small"
                               color="blue-gray"
                               className="font-semibold"
                             >
-                              {name}
+                              {product.name}
                             </Typography>
                             <Typography className="text-xs font-normal text-blue-gray-500">
-                              {email}
+                              {product.user}
                             </Typography>
                           </div>
                         </div>
                       </td>
                       <td className={className}>
                         <Typography className="text-xs font-semibold text-blue-gray-600">
-                          {job[0]}
+                          {product.user}
                         </Typography>
                         <Typography className="text-xs font-normal text-blue-gray-500">
-                          {job[1]}
+                          
                         </Typography>
                       </td>
-                      <td className={className}>
-                        <Chip
-                          variant="gradient"
-                          color={online ? "green" : "blue-gray"}
-                          value={online ? "online" : "offline"}
-                          className="py-0.5 px-2 text-[11px] font-medium w-fit"
-                        />
-                      </td>
+                     
                       <td className={className}>
                         <Typography className="text-xs font-semibold text-blue-gray-600">
-                          {date}
+                          {product.price} DA
                         </Typography>
                       </td>
                       <td className={className}>
                         <Typography
                           as="a"
                           href="#"
-                          className="text-xs font-semibold text-blue-gray-600"
+                          className="text-xs font-semibold text-red-600"
                         >
-                          Edit
+                          delete
                         </Typography>
                       </td>
                     </tr>

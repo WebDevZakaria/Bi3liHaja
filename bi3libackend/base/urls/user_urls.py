@@ -13,6 +13,9 @@ urlpatterns = [
 
     path('allproduct/', views.getMyProducts, name='products'),
 
+    path('allusers/', views.getAllusers, name='users'),
+
+
     
 ]
 

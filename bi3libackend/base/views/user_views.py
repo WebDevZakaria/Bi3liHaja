@@ -92,3 +92,15 @@ def getMyProducts(request):
     return Response(serializers.data)
 
 
+
+@api_view(['GET'])
+@permission_classes([IsAdminUser])
+
+def getAllusers(request):
+    
+    accounts = Account.objects.all()
+
+    serializers = UserSerializers(accounts, many=True)
+
+    return Response(serializers.data)
+

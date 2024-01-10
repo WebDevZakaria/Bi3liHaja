@@ -11,7 +11,7 @@ import { USER_DETAILS_SUCCESS } from "../constants/userConstants";
 import { USER_DETAILS_FAIL } from "../constants/userConstants";
 
 import { PRODUCT_LIST_MY_REQUEST,PRODUCT_LIST_MY_FAIL,PRODUCT_LIST_MY_RESET,PRODUCT_LIST_MY_SUCCESS } from "../constants/userConstants";
-
+import { USER_LIST_REQUEST,USER_LIST_SUCCESS,USER_LIST_FAIL } from "../constants/userConstants";
 
 import axios from "axios";
 
@@ -184,6 +184,64 @@ export const login = (email,password) => async(dispatch)=>
             }
         
             }
+
+
+
+            export const listUsers =() => async(dispatch) => {
+    
+                try{
+                
+                    dispatch({type:USER_LIST_REQUEST})
+                
+                    const { data } = await axios.get('/api/users/allusers/')
+            
+                    
+                    dispatch({type:USER_LIST_SUCCESS,payload:data})
+                    
+                } 
+                
+                
+                catch(error){
+                
+                    dispatch({type:USER_LIST_FAIL,payload:error.response && error.response.data.detail 
+                        ? error.response.data.detail
+                        : error.message,
+                    })
+                
+                }
+                }
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -56,6 +56,7 @@ class MyAccountManager(BaseUserManager):
 
 
 class Account(AbstractBaseUser):
+    
 
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
@@ -71,6 +72,8 @@ class Account(AbstractBaseUser):
     is_superadmin = models.BooleanField(default=False)
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
+    
+    
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'first_name', 'last_name']
 
