@@ -27,11 +27,22 @@ import { statisticsChartsData } from '../../data/statistics-charts-data'
 import { projectsTableData } from '../../data/projects-table-data'
 import { ordersOverviewData } from '../../data/orders-overview-data'
 
+import { useDispatch,useSelector } from 'react-redux';
+
+import { listUsers } from '../../../actions/userActions';
+
 import NavBar from "./NavBar";
 
 
 
  function Home() {
+
+
+  const dispatch = useDispatch()
+  const userList = useSelector(state=>state.userList)  
+
+  const { users }  = userList
+
 
   useEffect(() => {
 
@@ -73,8 +84,27 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-  }, [])
+dispatch(listUsers())
+
+
+
+  }, [dispatch])
  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
 
 
   return (
@@ -82,25 +112,103 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <NavBar />
 
-    <div className="mt-12">
+    <div className="mt-12"> 
 
+       
 
       <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-4">
-        {statisticsCardsData.map(({  title, footer, ...rest }) => (
-          <StatisticsCard
-            key={title}
-            {...rest}
-            title={title}
-           
-            footer={
-              <Typography className="font-normal text-blue-gray-600">
-                <strong className={footer.color}>{footer.value}</strong>
-                &nbsp;{footer.label}
-              </Typography>
-            }
-          />
-        ))}
+
+      <Card className="border border-blue-gray-100 shadow-sm">
+      <CardHeader
+        variant="gradient"
+        color= 'blue'
+        floated={false}
+        shadow={false}
+        className="absolute grid h-12 w-12 place-items-center"
+      >
+        
+      </CardHeader>
+      <CardBody className="p-4 text-right">
+        <Typography variant="small" className="font-normal text-blue-gray-600">
+          جميع المستخدمين
+        </Typography>
+        <Typography variant="h4" color="blue-gray">
+        {users.length} مستخدم
+        </Typography>
+      </CardBody>
+    
+    </Card>
+
+    <Card className="border border-blue-gray-100 shadow-sm">
+      <CardHeader
+        variant="gradient"
+        color= 'blue'
+        floated={false}
+        shadow={false}
+        className="absolute grid h-12 w-12 place-items-center"
+      >
+        
+      </CardHeader>
+      <CardBody className="p-4 text-right">
+        <Typography variant="small" className="font-normal text-blue-gray-600">
+          المستخدمين النشطين
+        </Typography>
+        <Typography variant="h4" color="blue-gray">
+        {users.length} مستخدم
+        </Typography>
+      </CardBody>
+    
+    </Card>
+    
+    <Card className="border border-blue-gray-100 shadow-sm">
+      <CardHeader
+        variant="gradient"
+        color= 'blue'
+        floated={false}
+        shadow={false}
+        className="absolute grid h-12 w-12 place-items-center"
+      >
+        
+      </CardHeader>
+      <CardBody className="p-4 text-right">
+        <Typography variant="small" className="font-normal text-blue-gray-600">
+          جميع المبيعات في الموقع
+        </Typography>
+        <Typography variant="h4" color="blue-gray">
+        {users.length} عملية بيع
+        </Typography>
+      </CardBody>
+    
+    </Card>
+    
+
+    <Card className="border border-blue-gray-100 shadow-sm">
+      <CardHeader
+        variant="gradient"
+        color= 'blue'
+        floated={false}
+        shadow={false}
+        className="absolute grid h-12 w-12 place-items-center"
+      >
+        
+      </CardHeader>
+      <CardBody className="p-4 text-right">
+        <Typography variant="small" className="font-normal text-blue-gray-600">
+          جميع المستخدمين
+        </Typography>
+        <Typography variant="h4" color="blue-gray">
+        {users.length} مستخدم
+        </Typography>
+      </CardBody>
+    
+    </Card>
+    
+
       </div>
+
+
+
+
       
       <div className="mb-6 grid grid-cols-1 gap-y-12 gap-x-6 md:grid-cols-2 xl:grid-cols-3">
         {statisticsChartsData.map((props) => (
@@ -134,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 variant="small"
                 className="flex items-center gap-1 font-normal text-blue-gray-600"
               >
-                <strong>30 done</strong> this month
+                <strong>30 done</strong> this month   
               </Typography>
             </div>
             <Menu placement="left-start">

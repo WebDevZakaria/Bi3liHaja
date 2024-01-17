@@ -94,7 +94,6 @@ def getMyProducts(request):
 
 
 @api_view(['GET'])
-@permission_classes([IsAdminUser])
 
 def getAllusers(request):
     
