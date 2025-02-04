@@ -205,7 +205,7 @@ function ResponsiveAppBar() {
                 </Link>
             
                 <MenuItem >
-                  <Button onClick={logoutHandler}><Typography textAlign="center">Logout</Typography></Button>
+                  <Button onClick={logoutHandler}><Typography textAlign="center">خروج</Typography></Button>
                 </MenuItem>
 
 

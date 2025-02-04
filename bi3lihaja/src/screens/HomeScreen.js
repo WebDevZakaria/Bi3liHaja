@@ -17,8 +17,6 @@ function HomeScreen() {
       <Market />
       <ImgMediaCard /> 
 
-      <BrandImage />
-      
       <Team />  
 
       <ShowCaractiristic />

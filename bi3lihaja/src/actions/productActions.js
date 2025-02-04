@@ -61,7 +61,7 @@ export const listProductDetails =(id) => async(dispatch) => {
     }
  
 
-        export const addproduct = (name,image,brand,category,description,wilaya,yourAdresss,price) => async(dispatch,getState)=> 
+        export const addproduct = (name,brand,category,description,wilaya,yourAdresss,price) => async(dispatch,getState)=> 
 
         {
         
@@ -81,6 +81,7 @@ export const listProductDetails =(id) => async(dispatch) => {
                 const config = {
         
                     headers: { 
+                        
                         'Content-Type': 'application/json',
         
                         'Authorization': 'Bearer ' + userInfo.token
@@ -93,7 +94,7 @@ export const listProductDetails =(id) => async(dispatch) => {
                 
                 axios.post('/api/products/addproduct/'
 
-               ,{'name':name,'image':image,'brand':brand,'category':category,'description':description,'wilaya':wilaya,'yourAdresss':yourAdresss,'price':price},config).then(response=>{
+               ,{'name':name,'brand':brand,'category':category,'description':description,'wilaya':wilaya,'yourAdresss':yourAdresss,'price':price},config).then(response=>{
         
                     dispatch({type:PRODUCT_ADD_SUCCESS,payload:response.data})
         
