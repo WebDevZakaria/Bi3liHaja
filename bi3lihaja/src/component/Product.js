@@ -20,9 +20,9 @@ export default function Product({product}) {
   let history = useNavigate();
   const addToCardHandler = ()=>{
 
-
     history(`/card/${product._id}`)    
-
+    
+    
  }
 
   return (
