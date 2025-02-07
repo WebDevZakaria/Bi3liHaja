@@ -59,13 +59,19 @@ let location = useLocation()
   
   return (
 
-    <section>
-      <HeroScreen />
-      <Market />
+     <section>
+    {!keyword && (
+  <>
+    <HeroScreen />
+    <Market />
+  </>
+  )}
+
 
        <>
           {!keyword ? <ProductSearch/> 
          :
+       
          (
 
           
@@ -85,8 +91,11 @@ let location = useLocation()
       
       </div>
       ))}
-      
+           <Market />
+
       </section>
+
+       
 
          )}
       
@@ -95,10 +104,20 @@ let location = useLocation()
       
       </>
       
-      <Team />  
+      
 
-      <ShowCaractiristic />
-      <Testimonial />   
+      {!keyword && (
+  <>
+    <Team />  
+
+   <ShowCaractiristic />
+  <Testimonial /> 
+
+  </>
+  )}
+
+
+
       
     </section>
 
