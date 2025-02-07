@@ -20,6 +20,7 @@ import { Link } from 'react-router-dom'
 import ZAKARIA from '../images/zedk.jpg'
 import { useSelector,useDispatch } from 'react-redux';
 import { logout } from '../actions/userActions';
+import LOGO from '../images/billi.png'
 
 const pages = ['كل المنتجات', 'تصنيفات', 'الولايات'];
 
@@ -64,7 +65,6 @@ function ResponsiveAppBar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
@@ -80,7 +80,7 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
+          <img alt="billi imgg" src={LOGO} className='w-[65px] h-[55px]' />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }} className = 'space-x-8'>
@@ -141,8 +141,8 @@ function ResponsiveAppBar() {
               textDecoration: 'none',
             }}
           >
-            LOGO
-          </Typography>
+                </Typography>
+
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
               <Link to='/filters'><Button sx={{ my: 2, color: 'white', display: 'block' }} >
                كل المنتجات
