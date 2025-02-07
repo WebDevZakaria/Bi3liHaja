@@ -1,13 +1,16 @@
-import * as React from 'react';
+import React,{useState} from 'react'
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
+import { Button } from '@mui/material';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
+
+import { useNavigate,useLocation } from 'react-router-dom'
 
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -52,21 +55,53 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchAppBar() {
+
+  const [keyword,setKeyword] = useState('')
+
+
+    let history = useNavigate()
+    let location = useLocation()
+
+    const submitHandler = (e)=>{
+        e.preventDefault()
+        if (keyword){
+            history(`/?keyword=${keyword}&page=1`)
+
+        }else{
+
+            history(history(location.pathname))
+        
+        }
+
+    }
+
+
+
   return (
    
-      
-     
+    <form onSubmit={submitHandler} className='flex space-x-4'>
+      <div>
           <Search className='w-[1300px] lg:w-[1300px]'>
-
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
+              onChange={(e) => setKeyword(e.target.value)}
             />
+
           </Search>
-        
+          </div>
+
+          <div>
+          <Button variant = "contained" type='submit'
+        style={{marginleft:'46px'}} 
+        >submit</Button>
+        </div>
+
+          </form>
+
  
   );
 }

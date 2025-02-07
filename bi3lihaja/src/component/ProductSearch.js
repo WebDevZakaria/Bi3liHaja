@@ -11,24 +11,25 @@ import { useDispatch,useSelector } from 'react-redux';
 import { listProducts } from '../actions/productActions';
 import { Link } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
+import { listTopProducts } from '../actions/productActions';
 
 import Product from './Product';
 
 
-export default function ImgMediaCard() {
-
-  const dispatch = useDispatch()
-
-  const productList = useSelector(state=>state.productList)  
-  const { products }  = productList
+export default function ProductSearch() {
 
 
+    const dispatch  = useDispatch()
 
-     useEffect(()=>{
+    const productTopRated = useSelector(state =>state.productTopRated)
 
-        dispatch(listProducts())
+    const{products} = productTopRated
 
-   },[dispatch])
+    useEffect(()=>{
+
+        dispatch(listTopProducts())
+
+    },[dispatch])
 
 
 
@@ -52,8 +53,6 @@ export default function ImgMediaCard() {
 ))}
 
 </section>
-
-
 
 
   );

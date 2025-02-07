@@ -4,6 +4,7 @@ from base.serializers import ProductSerializers,PreproductSerializers
 from rest_framework.decorators import api_view
 from base.models import Product,Preproduct
 from rest_framework import status
+from django.db.models import Q
 
 
 # Create your views here.
@@ -11,11 +12,28 @@ from rest_framework import status
 @api_view(['GET'])
 def getProducts(request):
 
-    product = Product.objects.all()
+     query = request.query_params.get('keyword')
 
-    serializers = ProductSerializers(product,many=True)
+     print({'query': query})
 
+     if query == None:
+        query = ''
+
+     product = Product.objects.filter(Q(name__icontains=query))
+    
+     serializers = ProductSerializers(product,many=True)
+
+     return Response(serializers.data)
+
+
+
+
+@api_view(['GET'])
+def getTopProduct(request):
+    product = Product.objects.filter(rating__gte=4).order_by('-rating')[0:5]
+    serializers = ProductSerializers(product, many=True)
     return Response(serializers.data)
+
 
 
 @api_view(['GET'])

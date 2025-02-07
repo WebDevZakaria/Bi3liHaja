@@ -31,7 +31,7 @@ function Team() {
     <div class="container my-24 mx-auto md:px-6">
       <section class="mb-32 text-center">
         <h2 class="mb-32 text-3xl font-bold">
-        Shop by  <u class="text-primary dark:text-primary-400">Category</u>
+        تسوق حسب   <u class="text-primary dark:text-primary-400">الفئة</u>
         </h2>
         <Carousel
   swipeable={false}
