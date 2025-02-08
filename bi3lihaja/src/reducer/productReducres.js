@@ -67,6 +67,8 @@ export const productAllReducer =(state = {products:[]},action) =>{
                 return {
                     loading:false,
                     products:action.payload,
+                    page:action.payload.pages,
+                    pages:action.payload.pages
                     
                 }
                 

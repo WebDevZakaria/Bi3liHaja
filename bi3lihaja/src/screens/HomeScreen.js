@@ -73,7 +73,6 @@ let location = useLocation()
          :
        
          (
-
           
           <section class="w-screen">
       

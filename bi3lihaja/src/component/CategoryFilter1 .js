@@ -5,20 +5,23 @@ import { AllProducts } from '../actions/productActions';
 
 import { useEffect } from 'react';
 
+import Paginate from './Paginate';
+
+
 
 function CategoryFilter1 () {
 
 
-  //let location = useLocation()
+//  let location = useLocation()
   
   
     const dispatch = useDispatch()
 
     const productAll = useSelector(state=>state.productAll)  
 
-    const { products }  = productAll
+    const {products,page,pages}  = productAll
 
-  
+
 
        useEffect(()=>{
   
@@ -28,8 +31,10 @@ function CategoryFilter1 () {
 
 
 
-  return (
 
+
+
+  return (
 
 
     <section>
@@ -134,8 +139,9 @@ function CategoryFilter1 () {
 </section>
 
 
+<Paginate page = {page} pages = {pages}/>
 
-<nav aria-label="Page Navigation" class="mx-auto my-10 flex max-w-md justify-between space-x-2 rounded-md bg-white py-2">
+{/* <nav aria-label="Page Navigation" class="mx-auto my-10 flex max-w-md justify-between space-x-2 rounded-md bg-white py-2">
   <a class="flex items-center space-x-1 font-medium text-gray-400" aria-label="Previous Page" tabindex="-1">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-4 w-4">
       <path fill-rule="evenodd" d="M7.72 12.53a.75.75 0 010-1.06l7.5-7.5a.75.75 0 111.06 1.06L9.31 12l6.97 6.97a.75.75 0 11-1.06 1.06l-7.5-7.5z" clip-rule="evenodd" />
@@ -156,7 +162,7 @@ function CategoryFilter1 () {
     </svg>
   </a>
 </nav>
-
+ */}
 
       
     </section>

@@ -29,11 +29,31 @@ def getProducts(request):
 @api_view(['GET'])
 def allProducts(request):
 
-     product = Product.objects.all()
+    product = Product.objects.all()
 
-     serializers = ProductSerializers(product,many=True)
 
-     return Response(serializers.data)
+
+    page = request.query_params.get('page')
+    paginator = Paginator(product, 8)
+
+    try:
+        product = paginator.page(page)
+    except PageNotAnInteger:
+        product = paginator.page(1)
+    except EmptyPage:
+        product = paginator.page(paginator.num_pages)
+
+    if page == None:
+        page = 1
+
+    page = int(page)
+
+
+    serializers = ProductSerializers(product,many=True)
+
+
+
+    return Response({'products':serializers.data, 'page': page, 'pages': paginator.num_pages})
 
 
 @api_view(['GET'])
