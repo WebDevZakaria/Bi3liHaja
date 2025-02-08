@@ -50,7 +50,7 @@ function App() {
         <Route path='/profile/' element = {<ProfileScreen/>} />
         <Route path='/success/' element = {<OrderSummary/>} />
         <Route path='/addProduct/' element = {<AddProductScreen/>} />
-        <Route path='/filters/' element = {<FilterCategoryScreen/>} />
+        <Route path='/allproducts/' element = {<FilterCategoryScreen/>} />
 
 
 

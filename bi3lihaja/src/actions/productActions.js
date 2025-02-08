@@ -9,7 +9,7 @@ import { PRODUCT_ADD_SUCCESS,PRODUCT_ADD_REQUEST,PRODUCT_ADD_FAIL } from "../con
 
 import { PRODUCT_TOP_REQUEST ,PRODUCT_TOP_FAIL,PRODUCT_TOP_SUCCESS} from "../constants/productConstants"
 
-
+import { PRODUCT_ALL_REQUEST ,PRODUCT_ALL_FAIL,PRODUCT_ALL_SUCCESS} from "../constants/productConstants"
 
 import axios from "axios"
 
@@ -40,6 +40,32 @@ export const listProducts =(keyword = '') => async(dispatch) => {
     }
     }
 
+
+
+
+    export const AllProducts =() => async(dispatch) => {
+    
+        try{
+        
+            dispatch({type:PRODUCT_ALL_REQUEST})
+        
+            const {  data } = await axios.get('/api/products/allproducts')
+    
+            
+            dispatch({type:PRODUCT_ALL_SUCCESS,payload:data})
+            
+        } 
+        
+        
+        catch(error){
+        
+            dispatch({type:PRODUCT_ALL_FAIL,payload:error.response && error.response.data.detail 
+                ? error.response.data.detail
+                : error.message,
+            })
+        
+        }
+        }
 
 
 

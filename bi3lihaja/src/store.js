@@ -18,6 +18,9 @@ import { userListReducer } from './reducer/userReducers'
 
 import { productTopRatedReducer } from './reducer/productReducres'
 
+import { productAllReducer} from './reducer/productReducres'
+
+
 
 
 const reducer = combineReducers({
@@ -34,6 +37,7 @@ const reducer = combineReducers({
     productAdd:productAddReducer,
     userList:userListReducer,
     productTopRated:productTopRatedReducer,
+    productAll:productAllReducer,
 
 })
 

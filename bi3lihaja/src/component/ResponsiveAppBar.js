@@ -144,7 +144,7 @@ function ResponsiveAppBar() {
                 </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              <Link to='/filters'><Button sx={{ my: 2, color: 'white', display: 'block' }} >
+              <Link to='/allproducts'><Button sx={{ my: 2, color: 'white', display: 'block' }} >
                كل المنتجات
               </Button></Link>
               <Button sx={{ my: 2, color: 'white', display: 'block' }}>

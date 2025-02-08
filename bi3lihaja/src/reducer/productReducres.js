@@ -9,6 +9,8 @@ import { PRODUCT_ADD_SUCCESS,PRODUCT_ADD_REQUEST,PRODUCT_ADD_FAIL } from "../con
 
 import { PRODUCT_TOP_REQUEST ,PRODUCT_TOP_FAIL,PRODUCT_TOP_SUCCESS} from "../constants/productConstants"
 
+import { PRODUCT_ALL_REQUEST ,PRODUCT_ALL_FAIL,PRODUCT_ALL_SUCCESS} from "../constants/productConstants"
+
 
 export const productListReducer =(state = {products:[]},action) =>{
     
@@ -44,6 +46,55 @@ export const productListReducer =(state = {products:[]},action) =>{
     }
 
 }
+
+
+
+export const productAllReducer =(state = {products:[]},action) =>{
+    
+    switch(action.type){
+
+        case PRODUCT_ALL_REQUEST:
+
+            return {
+
+                loading:true,
+                products:[]
+
+            }
+
+        case PRODUCT_ALL_SUCCESS:
+            
+                return {
+                    loading:false,
+                    products:action.payload,
+                    
+                }
+                
+        case PRODUCT_ALL_FAIL:
+                return {
+                   loading:false,error:action.payload
+                    }
+
+        
+                    
+        default: 
+                      return state
+        
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
